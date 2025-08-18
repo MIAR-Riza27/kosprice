@@ -78,6 +78,21 @@ KosPrice adalah aplikasi web yang memprediksi harga kos/kontrakan berdasarkan in
 
 ---
 
+## Fitur Baru v1.0
+
+- **Frontend HTML sederhana** untuk pengetesan prediksi harga kos.
+  - File: `frontend/index.html`
+  - User bisa input data (luas, jumlah kamar, jarak kampus) dan submit form.
+  - Hasil prediksi harga langsung muncul di halaman.
+- **Integrasi CORS di backend** agar frontend lokal bisa akses API tanpa error.
+- **Cara tes frontend:**
+  1. Jalankan backend FastAPI seperti biasa.
+  2. Buka file `frontend/index.html` di browser.
+  3. Isi form, submit, dan lihat hasil prediksi.
+  4. Alternatif: Jalankan web server lokal di folder frontend dengan `python -m http.server` lalu akses `http://localhost:8000/index.html`.
+
+---
+
 ## Roadmap Versi
 
 - **v1.0**: SQL only, core prediksi berjalan
