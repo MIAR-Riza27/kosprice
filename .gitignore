@@ -1,0 +1,84 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Build / distribusi
+build/
+dist/
+site/
+.eggs/
+*.egg-info/
+*.egg
+
+# Test & coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+coverage.xml
+htmlcov/
+
+# Cache umum / tooling
+.cache/
+.benchmarks/
+
+# Notebook
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+.env.*
+*.env
+.envrc
+.python-version
+
+# Database lokal / runtime
+*.sqlite3
+*.db
+
+# Profiling
+*.prof
+profiler-output/
+
+# Editor / IDE (aktifkan jika tidak ingin dibagi)
+# .vscode/
+.idea/
+*.swp
+*.swo
+
+# Frontend (jika nanti pakai npm; hapus jika ingin commit node_modules)
+node_modules/
+*.tsbuildinfo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Model artifacts
+backend/*.joblib
+
+# History & data runtime
+backend/history.json
+backend/.data/
+backend/.data/history.json
+
+# Model artifacts tambahan
+models/
+*.h5
+*.pt
+*.onnx
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Optional: uncomment to ignore VSCode settings
+# .vscode/
