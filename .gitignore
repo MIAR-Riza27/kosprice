@@ -45,7 +45,7 @@ htmlcov/
 profiler-output/
 
 # Editor / IDE (aktifkan jika tidak ingin dibagi)
-# .vscode/
+.vscode/
 .idea/
 *.swp
 *.swo
