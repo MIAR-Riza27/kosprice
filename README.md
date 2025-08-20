@@ -106,19 +106,6 @@ KosPrice adalah aplikasi web yang memprediksi harga kos/kontrakan berdasarkan in
 
 ---
 
-## Roadmap Versi
-
-- **v1.0**: ✅ Core prediksi berjalan + frontend HTML sederhana
-- **v1.1**: ✅ Update tampilan frontend (CSS styling), tambah fitur histori prediksi
-- **v1.2**: Perbaikan UI/UX, validasi input yang lebih baik, loading states
-- **v2.0**: Migrasi frontend ke React.js, patch fasilitas dengan NoSQL (MongoDB)
-- **v2.1**: Dashboard admin untuk manage data, bulk prediction
-- **v3.0**: Analitik harga rata-rata per kota + visualisasi tren (charts)
-- **v3.1**: Mobile responsive, PWA (Progressive Web App)
-- **v4.0**: Deploy to production (Vercel + Render), domain custom
-
----
-
 ## Publish / Showcase
 
 - Kode & dokumentasi di GitHub
