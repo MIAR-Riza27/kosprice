@@ -16,8 +16,20 @@ app.add_middleware(
 )
 model = KosPriceModel()
 
-# File untuk menyimpan histori
-HISTORY_FILE = os.path.join(os.path.dirname(__file__), "history.json")
+# Direktori data tersembunyi & migrasi file lama
+DATA_DIR = os.path.join(os.path.dirname(__file__), ".data")
+os.makedirs(DATA_DIR, exist_ok=True)
+
+OLD_HISTORY_FILE = os.path.join(os.path.dirname(__file__), "history.json")
+HISTORY_FILE = os.path.join(DATA_DIR, "history.json")
+
+# Migrasi satu kali jika file lama ada dan file baru belum dibuat
+if os.path.exists(OLD_HISTORY_FILE) and not os.path.exists(HISTORY_FILE):
+    try:
+        os.replace(OLD_HISTORY_FILE, HISTORY_FILE)
+        print("Migrated history.json to .data/")
+    except Exception as _e:
+        print(f"Gagal migrasi history.json: {_e}")
 
 
 class KosInput(BaseModel):
@@ -27,7 +39,7 @@ class KosInput(BaseModel):
 
 
 def save_to_history(input_data, prediction):
-    """Menyimpan prediksi ke histori"""
+    """Menyimpan prediksi ke histori (otomatis di .data)."""
     history_entry = {
         "timestamp": datetime.now().isoformat(),
         "input": {
