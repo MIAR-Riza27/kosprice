@@ -78,45 +78,44 @@ KosPrice adalah aplikasi web yang memprediksi harga kos/kontrakan berdasarkan in
 
 ---
 
-## Fitur Baru v1.1
+## Status Model (v1.0)
 
-- **CSS Styling yang lebih baik** untuk frontend dengan layout yang rapi.
-- **Histori Prediksi** - Semua prediksi disimpan dan bisa dilihat di halaman.
-  - Endpoint `/history` di backend untuk mengambil histori.
-  - Tampilan histori dengan timestamp dan detail input.
-  - Auto-refresh histori setelah prediksi baru.
-  - Maksimal 100 entry histori tersimpan.
-- **Format harga yang lebih baik** dengan pemisah ribuan (Rp 1.500.000).
-- **Error handling yang lebih baik** dengan styling untuk pesan error.
+Model masih dummy / baseline:
+
+- Dataset sintetis kecil (bukan data real).
+- Fitur: luas_m2, jumlah_kamar, jarak_kampus_km.
+- Hanya validasi alur end‑to‑end (train → save → load → predict).
+- Belum akurat untuk penggunaan nyata (jangan dipakai keputusan finansial).
+- Update model: `cd backend && python train_model.py`
 
 ---
 
 ## Fitur v1.0
 
-- **Frontend HTML sederhana** untuk pengetesan prediksi harga kos.
-  - File: `frontend/index.html`
-  - User bisa input data (luas, jumlah kamar, jarak kampus) dan submit form.
-  - Hasil prediksi harga langsung muncul di halaman.
-- **Integrasi CORS di backend** agar frontend lokal bisa akses API tanpa error.
-- **Cara tes frontend:**
-  1. Jalankan backend FastAPI seperti biasa.
-  2. Buka file `frontend/index.html` di browser.
-  3. Isi form, submit, dan lihat hasil prediksi.
-  4. Alternatif: Jalankan web server lokal di folder frontend dengan `python -m http.server` lalu akses `http://localhost:8000/index.html`.
+- Endpoint `/predict` (FastAPI) memuat `model.joblib`.
+- Frontend HTML sederhana (`frontend/index.html`) kirim input & tampilkan hasil.
+- CORS diaktifkan (akses via file:// atau server statis sederhana).
+- Swagger UI di `/docs`.
+- Cara tes frontend:
+  1. Jalankan backend.
+  2. Buka `frontend/index.html`.
+  3. Isi form → submit → lihat prediksi.
+  4. Alternatif: `cd frontend && python -m http.server 5500` lalu buka `http://localhost:5500/index.html`.
 
 ---
 
 ## Publish / Showcase
 
 - Kode & dokumentasi di GitHub
-- Demo frontend di Vercel
-- Demo backend di Render/HuggingFace
-- Portfolio page (Notion/GitHub Pages)
+- Demo frontend (rencana) di Vercel
+- Demo backend (rencana) di Render / HuggingFace
+- Portfolio page (Notion / GitHub Pages)
 
 ---
 
 ## Catatan
 
-- Folder `__pycache__/` otomatis dari Python, abaikan (masukkan ke `.gitignore`).
-- File `model.joblib` adalah hasil training, dibaca oleh backend untuk prediksi.
-- Untuk update model, jalankan ulang `train_model.py` dengan data baru.
+- `__pycache__/` otomatis, diabaikan.
+- `model.joblib` = model dummy.
+- Retrain: jalankan ulang `train_model.py`.
+- Fitur lanjutan (histori, styling, analitik) akan ditambahkan pada versi berikut tanpa ditulis sebagai roadmap di README ini.
