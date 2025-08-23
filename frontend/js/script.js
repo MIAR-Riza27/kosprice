@@ -35,20 +35,27 @@ form.addEventListener("submit", async (e) => {
 async function loadHistory() {
   try {
     const res = await fetch("http://127.0.0.1:8000/history");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    
-    if (data.history.length === 0) {
+
+    if (!data.history || data.history.length === 0) {
       historyList.innerHTML = "<p>Belum ada histori prediksi.</p>";
       return;
     }
 
     historyList.innerHTML = data.history.map(item => {
       const date = new Date(item.timestamp).toLocaleString();
+      const input = item.input || {};
+      const luas = input.luas_m2 ?? "-";
+      const kamar = input.jumlah_kamar ?? "-";
+      const jarak = input.jarak_kampus_km ?? "-";
+      const harga = item.prediksi_harga ?? 0;
+
       return `
         <div class="history-item">
           <div class="history-header">${date}</div>
-          <div>Luas: ${item.input.luas_m2} m² | Kamar: ${item.input.jumlah_kamar} | Jarak: ${item.input.jarak_kampus_km} km</div>
-          <div><strong>Prediksi: Rp ${item.prediksi_harga.toLocaleString()}</strong></div>
+          <div>Luas: ${luas} m² | Kamar: ${kamar} | Jarak: ${jarak} km</div>
+          <div><strong>Prediksi: Rp ${Number(harga).toLocaleString()}</strong></div>
         </div>
       `;
     }).join("");
@@ -60,4 +67,5 @@ async function loadHistory() {
 // Refresh button
 document.getElementById("refresh-history").addEventListener("click", loadHistory);
 
-// Load histori saat halaman
+// Load histori saat halaman dibuka
+loadHistory();
