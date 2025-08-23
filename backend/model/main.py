@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
-from model import KosPriceModel
+from .model import KosPriceModel
 import json
 import os
 
@@ -16,8 +16,9 @@ app.add_middleware(
 )
 model = KosPriceModel()
 
-# Direktori data tersembunyi & migrasi file lama
-DATA_DIR = os.path.join(os.path.dirname(__file__), ".data")
+# Pastikan .data di backend/, bukan di backend/model/
+BACKEND_DIR = os.path.dirname(os.path.dirname(__file__))  # -> backend/
+DATA_DIR = os.path.join(BACKEND_DIR, ".data")
 os.makedirs(DATA_DIR, exist_ok=True)
 
 OLD_HISTORY_FILE = os.path.join(os.path.dirname(__file__), "history.json")

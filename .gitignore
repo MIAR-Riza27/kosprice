@@ -1,5 +1,5 @@
 # Python cache
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *.pyo
 *.pyd
@@ -44,13 +44,13 @@ htmlcov/
 *.prof
 profiler-output/
 
-# Editor / IDE (aktifkan jika tidak ingin dibagi)
+# Editor / IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Frontend (jika nanti pakai npm; hapus jika ingin commit node_modules)
+# Frontend (npm)
 node_modules/
 *.tsbuildinfo
 
@@ -59,16 +59,13 @@ node_modules/
 venv/
 env/
 
-# Model artifacts
-backend/*.joblib
+# Model artifacts (backend)
+backend/model/model.joblib
 
 # History & data runtime
-backend/history.json
 backend/.data/
-backend/.data/history.json
 
 # Model artifacts tambahan
-models/
 *.h5
 *.pt
 *.onnx
@@ -79,6 +76,3 @@ models/
 # OS
 .DS_Store
 Thumbs.db
-
-# Optional: uncomment to ignore VSCode settings
-# .vscode/
