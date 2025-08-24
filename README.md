@@ -13,7 +13,7 @@ KosPrice adalah aplikasi web yang memprediksi harga kos/kontrakan berdasarkan in
 
 ---
 
-## Tools & Teknologi
+## Tools & Teknologi (Masih dalam Perencanaan)
 
 **Frontend:**
 
@@ -51,21 +51,21 @@ KosPrice adalah aplikasi web yang memprediksi harga kos/kontrakan berdasarkan in
 
    - Jalankan script berikut di terminal:
      ```
-     cd backend
+     cd backend/model
      python train_model.py
      ```
-   - Model akan tersimpan di `model.joblib`.
+   - Model akan tersimpan di `model.joblib` (dalam folder `backend/model/`).
 
 2. **Menjalankan API Backend**
 
-   - Jalankan server FastAPI:
+   - Jalankan server FastAPI dari root project:
      ```
-     cd backend
-     uvicorn main:app --reload
+     uvicorn backend.model.main:app --reload
      ```
    - Buka browser di [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) untuk Swagger UI.
 
 3. **Tes Prediksi**
+
    - Kirim request POST ke endpoint `/predict` dengan contoh data:
      ```json
      {
@@ -75,6 +75,15 @@ KosPrice adalah aplikasi web yang memprediksi harga kos/kontrakan berdasarkan in
      }
      ```
    - API akan mengembalikan prediksi harga kos.
+
+4. **Tes Frontend**
+   - Buka file `frontend/index.html` langsung di browser, atau jalankan server statis:
+     ```
+     cd frontend
+     python -m http.server 5500
+     ```
+   - Buka [http://localhost:5500/index.html](http://localhost:5500/index.html) di browser.
+   - Isi form, submit, dan lihat hasil prediksi serta histori.
 
 ---
 
