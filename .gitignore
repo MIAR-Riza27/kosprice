@@ -50,9 +50,18 @@ profiler-output/
 *.swp
 *.swo
 
-# Frontend (npm)
-node_modules/
+# Frontend (React/npm) - specific paths
+**/node_modules/
+frontend/react-app/build/
+frontend/react-app/coverage/
 *.tsbuildinfo
+.pnp
+.pnp.js
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Virtual environments
 .venv/
