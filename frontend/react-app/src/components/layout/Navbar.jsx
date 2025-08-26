@@ -111,10 +111,10 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
           {/* Enhanced Navigation Links */}
           <div className="hidden md:flex items-center space-x-2">
             {[
-              { href: "#home", text: "Beranda", delay: 200, icon: "🏠" },
-              { href: "#predict", text: "Prediksi", delay: 250, icon: "🔮" },
-              { href: "#history", text: "Riwayat", delay: 300, icon: "📊" },
-              { href: "#about", text: "Tentang", delay: 350, icon: "ℹ️" }
+              { href: "#home", text: "Beranda", delay: 200 },
+              { href: "#predict", text: "Prediksi", delay: 250 },
+              { href: "#history", text: "Riwayat", delay: 300 },
+              { href: "#about", text: "Tentang", delay: 350 }
             ].map((item, index) => (
               <a 
                 key={index}
@@ -129,7 +129,6 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
                 style={{ transitionDelay: `${item.delay}ms` }}
               >
                 <span className="flex items-center space-x-2 relative z-10">
-                  <span className="group-hover:scale-125 transition-transform duration-200">{item.icon}</span>
                   <span>{item.text}</span>
                 </span>
                 

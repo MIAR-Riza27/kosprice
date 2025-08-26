@@ -89,11 +89,11 @@ const Footer = () => {
           }`}>
             <h4 className="text-md font-semibold mb-4 text-yellow-300">Menu Cepat</h4>
             <ul className="space-y-3 text-sm">
-              {[
-                { href: "#home", text: "Beranda", icon: "🏠" },
-                { href: "#predict", text: "Prediksi Harga", icon: "🔮" },
-                { href: "#history", text: "Riwayat Prediksi", icon: "📊" },
-                { href: "#about", text: "Tentang Aplikasi", icon: "ℹ️" }
+              {[ 
+                { href: "#home", text: "Beranda" },
+                { href: "#predict", text: "Prediksi Harga" },
+                { href: "#history", text: "Riwayat Prediksi" },
+                { href: "#about", text: "Tentang Aplikasi" }
               ].map((item, index) => (
                 <li 
                   key={item.text}
@@ -105,9 +105,6 @@ const Footer = () => {
                     href={item.href} 
                     className="text-gray-300 hover:text-yellow-300 transition-all duration-300 flex items-center group transform hover:translate-x-2"
                   >
-                    <span className="mr-2 group-hover:scale-125 transition-transform duration-200">
-                      {item.icon}
-                    </span>
                     <span className="group-hover:font-medium">{item.text}</span>
                   </a>
                 </li>
@@ -121,11 +118,11 @@ const Footer = () => {
           }`}>
             <h4 className="text-md font-semibold mb-4 text-yellow-300">Teknologi</h4>
             <ul className="space-y-3 text-sm text-gray-300">
-              {[
-                { text: "🐍 Python & FastAPI", color: "hover:text-green-400" },
-                { text: "⚛️ React & Tailwind CSS", color: "hover:text-blue-400" },
-                { text: "🤖 Machine Learning (XGBoost)", color: "hover:text-purple-400" },
-                { text: "📊 Data Science", color: "hover:text-orange-400" }
+              {[ 
+                { text: "Python & FastAPI", color: "hover:text-green-400" },
+                { text: "React & Tailwind CSS", color: "hover:text-blue-400" },
+                { text: "Machine Learning (XGBoost)", color: "hover:text-purple-400" },
+                { text: "Data Science", color: "hover:text-orange-400" }
               ].map((item, index) => (
                 <li 
                   key={item.text}

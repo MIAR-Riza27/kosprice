@@ -106,10 +106,10 @@ const Sidebar = ({ isOpen, onClose }) => {
           {/* Enhanced Navigation */}
           <nav className="p-6 space-y-3">
             {[
-              { href: "#home", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", text: "Beranda", delay: "delay-300", color: "from-blue-500 to-cyan-500", emoji: "🏠" },
-              { href: "#predict", icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z", text: "Prediksi Harga", delay: "delay-400", color: "from-purple-500 to-pink-500", emoji: "🔮" },
-              { href: "#history", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", text: "Riwayat", delay: "delay-500", color: "from-green-500 to-emerald-500", emoji: "📊" },
-              { href: "#about", icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z", text: "Tentang", delay: "delay-600", color: "from-orange-500 to-red-500", emoji: "ℹ️" }
+              { href: "#home", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", text: "Beranda", delay: "delay-300", color: "from-blue-500 to-cyan-500" },
+              { href: "#predict", icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z", text: "Prediksi Harga", delay: "delay-400", color: "from-purple-500 to-pink-500" },
+              { href: "#history", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", text: "Riwayat", delay: "delay-500", color: "from-green-500 to-emerald-500" },
+              { href: "#about", icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z", text: "Tentang", delay: "delay-600", color: "from-orange-500 to-red-500" }
             ].map((item, index) => (
               <div key={index} className={`transition-all duration-700 ${item.delay} ${
                 showContent ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-8 scale-90'
@@ -132,7 +132,6 @@ const Sidebar = ({ isOpen, onClose }) => {
                   {/* Text content */}
                   <div className="relative z-10 flex-1">
                     <span className="font-semibold group-hover:font-bold transition-all duration-200 flex items-center text-sm">
-                      <span className="mr-2 text-base group-hover:scale-110 transition-transform duration-200">{item.emoji}</span>
                       {item.text}
                     </span>
                   </div>
@@ -167,9 +166,9 @@ const Sidebar = ({ isOpen, onClose }) => {
             <div className="text-center">
               <div className="flex items-center justify-center space-x-2 mb-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <p className="text-sm text-gray-600 font-semibold">KosPrice v1.0</p>
+                <p className="text-sm text-gray-600 font-semibold">KosPrice v2.0</p>
               </div>
-              <p className="text-xs text-gray-400">🤖 AI-Powered Platform</p>
+              <p className="text-xs text-gray-400">AI-Powered Platform</p>
               
               {/* Clean progress indicator */}
               <div className="mt-3 w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">

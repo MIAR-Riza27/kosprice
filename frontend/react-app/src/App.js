@@ -153,10 +153,10 @@ function App() {
                   isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   <button className="px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base">
-                    🔮 Mulai Prediksi
+                    Mulai Prediksi
                   </button>
                   <button className="px-6 lg:px-8 py-3 lg:py-4 bg-white text-gray-700 font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-gray-200 hover:border-blue-300 text-sm sm:text-base">
-                    📚 Pelajari Lebih Lanjut
+                    Pelajari Lebih Lanjut
                   </button>
                 </div>
               </div>
@@ -164,39 +164,39 @@ function App() {
               {/* FIXED: Feature Cards dengan container yang proper */}
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                  {[
+                  {[ 
                     { 
-                      title: "🤖 Machine Learning", 
+                      title: "Machine Learning", 
                       desc: "Prediksi akurat menggunakan algoritma XGBoost yang telah dilatih dengan data real",
                       color: "from-blue-500 to-cyan-500",
                       delay: 300
                     },
                     { 
-                      title: "📊 Analisis Data", 
+                      title: "Analisis Data", 
                       desc: "Visualisasi data komprehensif untuk memahami tren harga kos di berbagai lokasi",
                       color: "from-purple-500 to-pink-500",
                       delay: 350
                     },
                     { 
-                      title: "🎯 Prediksi Presisi", 
+                      title: "Prediksi Presisi", 
                       desc: "Estimasi harga berdasarkan lokasi, luas kamar, fasilitas, dan faktor-faktor lainnya",
                       color: "from-green-500 to-emerald-500",
                       delay: 400
                     },
                     { 
-                      title: "📱 Interface Modern", 
+                      title: "Interface Modern", 
                       desc: "Antarmuka yang responsif dan mudah digunakan dengan teknologi React terbaru",
                       color: "from-orange-500 to-red-500",
                       delay: 450
                     },
                     { 
-                      title: "⚡ Real-time", 
+                      title: "Real-time", 
                       desc: "Prediksi instan dengan API yang cepat menggunakan FastAPI dan Python",
                       color: "from-indigo-500 to-blue-500",
                       delay: 500
                     },
                     { 
-                      title: "📈 Riwayat Prediksi", 
+                      title: "Riwayat Prediksi", 
                       desc: "Simpan dan lihat kembali prediksi sebelumnya untuk analisis lebih lanjut",
                       color: "from-pink-500 to-purple-500",
                       delay: 550
