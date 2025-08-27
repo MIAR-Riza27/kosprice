@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Card = ({ children, title, className = '', ...props }) => {
   return (
@@ -12,6 +13,12 @@ const Card = ({ children, title, className = '', ...props }) => {
       {children}
     </div>
   );
+};
+
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Card;

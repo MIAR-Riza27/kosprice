@@ -15,7 +15,7 @@ const PredictPage = () => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { success, error: toastError } = useToast();
+  const { success, error: showError } = useToast();
 
   const handleChange = (e) => {
     setFormData({
@@ -50,7 +50,6 @@ const PredictPage = () => {
       const data = await response.json();
       setResult(data);
       
-      // Show success toast
       success(
         'Prediksi Berhasil!',
         `Estimasi harga: Rp ${data.prediksi_harga.toLocaleString('id-ID')}`
@@ -60,12 +59,13 @@ const PredictPage = () => {
       console.error('Fetch error:', err);
       
       if (err.name === 'TypeError' && err.message.includes('Failed to fetch')) {
-        const errorMsg = 'Tidak dapat terhubung ke server. Pastikan backend sudah berjalan.';
+        const errorMsg = 'Tidak dapat terhubung ke server. Pastikan backend sudah berjalan di http://127.0.0.1:8000';
         setError(errorMsg);
-        toastError('Koneksi Gagal', errorMsg);
+        showError('Koneksi Gagal', errorMsg);
       } else {
-        setError(`Error: ${err.message}`);
-        toastError('Terjadi Kesalahan', err.message);
+        const errorMsg = `Error: ${err.message}`;
+        setError(errorMsg);
+        showError('Terjadi Kesalahan', err.message);
       }
     } finally {
       setLoading(false);
