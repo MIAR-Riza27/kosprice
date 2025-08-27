@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
+const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -19,7 +19,8 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
     <nav className={`
       fixed top-0 left-0 right-0 z-[100]
       bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 
-      shadow-xl backdrop-blur-md border-b border-blue-500/20
+      dark:from-slate-800 dark:via-slate-900 dark:to-slate-800
+      shadow-xl backdrop-blur-md border-b border-blue-500/20 dark:border-slate-700/50
       transition-all duration-500 transform
       ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
       ${scrolled ? 'bg-opacity-95 shadow-2xl' : 'bg-opacity-90'}
@@ -111,19 +112,20 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
           {/* Enhanced Navigation Links */}
           <div className="hidden md:flex items-center space-x-2">
             {[
-              { href: "#home", text: "Beranda", delay: 200 },
-              { href: "#predict", text: "Prediksi", delay: 250 },
-              { href: "#history", text: "Riwayat", delay: 300 },
-              { href: "#about", text: "Tentang", delay: 350 }
+              { page: "home", text: "Beranda", delay: 200 },
+              { page: "predict", text: "Prediksi", delay: 250 },
+              { page: "history", text: "Riwayat", delay: 300 },
+              { page: "about", text: "Tentang", delay: 350 }
             ].map((item, index) => (
-              <a 
+              <button 
                 key={index}
-                href={item.href} 
+                onClick={() => navigateTo(item.page)}
                 className={`
                   group relative text-white hover:text-yellow-300 px-4 py-2 rounded-xl text-sm font-medium 
                   transition-all duration-300 transform hover:-translate-y-1 hover:scale-105
                   bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-yellow-300/50
                   shadow-lg hover:shadow-xl overflow-hidden
+                  ${currentPage === item.page ? 'bg-white/20 text-yellow-300' : ''}
                   ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}
                 `}
                 style={{ transitionDelay: `${item.delay}ms` }}
@@ -132,10 +134,9 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
                   <span>{item.text}</span>
                 </span>
                 
-                {/* Hover background effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-300/10 to-orange-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 left-1/2 w-0 h-1 bg-gradient-to-r from-yellow-300 to-orange-400 group-hover:w-full group-hover:left-0 transition-all duration-300 rounded-full"></div>
-              </a>
+              </button>
             ))}
           </div>
         </div>

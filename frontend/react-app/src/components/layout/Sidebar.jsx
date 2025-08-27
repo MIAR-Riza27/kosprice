@@ -1,25 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
-const Sidebar = ({ isOpen, onClose }) => {
+const Sidebar = ({ isOpen, onClose, navigateTo }) => {
   const [showContent, setShowContent] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => setShowContent(true), 300);
+      const timer = setTimeout(() => setShowContent(true), 100);
+      return () => clearTimeout(timer);
     } else {
       setShowContent(false);
     }
   }, [isOpen]);
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
     return () => clearInterval(timer);
   }, []);
 
   return (
     <>
-      {/* Enhanced Overlay */}
+      {/* Backdrop */}
       <div 
         className={`fixed inset-0 bg-gradient-to-br from-black/50 via-blue-900/30 to-black/50 backdrop-blur-sm transition-all duration-700 ease-in-out z-40 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -27,13 +31,13 @@ const Sidebar = ({ isOpen, onClose }) => {
         onClick={onClose}
       ></div>
 
-      {/* Clean Modern Sidebar */}
+      {/* Sidebar Container */}
       <div className={`
         fixed top-0 left-0 z-50
         transform transition-all duration-700 ease-in-out
         ${isOpen ? 'w-72 h-full' : 'w-6 h-6 top-4 left-4'}
       `}>
-        {/* Sidebar header overlay (navbar gradient) */}
+        {/* Top gradient bar */}
         {isOpen && (
           <div className="absolute top-0 left-0 w-full h-16 rounded-t-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 z-10 shadow-md"></div>
         )}
@@ -43,11 +47,10 @@ const Sidebar = ({ isOpen, onClose }) => {
           overflow-hidden
         `}>
           
-          {/* REMOVED: Floating particles */}
-          {/* ADDED: Clean gradient background */}
+          {/* Main background */}
           <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/80 to-indigo-100/90 backdrop-blur-lg"></div>
           
-          {/* Clean geometric pattern */}
+          {/* Subtle pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="w-full h-full" style={{
               backgroundImage: `
@@ -61,12 +64,12 @@ const Sidebar = ({ isOpen, onClose }) => {
             }}></div>
           </div>
 
-          {/* Modern border accent */}
+          {/* Left border accent */}
           <div className={`absolute inset-0 rounded-2xl border-l-4 border-gradient-to-b from-blue-400 via-purple-500 to-blue-600 transition-all duration-500 ${
             isOpen ? 'opacity-60' : 'opacity-0'
           }`}></div>
 
-          {/* Enhanced Header */}
+          {/* Header */}
           <div className={`flex items-center justify-between p-6 border-b border-blue-200/30 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 backdrop-blur-sm relative transition-all duration-700 delay-200 ${
             showContent ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
@@ -103,21 +106,20 @@ const Sidebar = ({ isOpen, onClose }) => {
             </button>
           </div>
 
-          {/* Enhanced Navigation */}
+          {/* Navigation */}
           <nav className="p-6 space-y-3">
             {[
-              { href: "#home", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", text: "Beranda", delay: "delay-300", color: "from-blue-500 to-cyan-500" },
-              { href: "#predict", icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z", text: "Prediksi Harga", delay: "delay-400", color: "from-purple-500 to-pink-500" },
-              { href: "#history", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", text: "Riwayat", delay: "delay-500", color: "from-green-500 to-emerald-500" },
-              { href: "#about", icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z", text: "Tentang", delay: "delay-600", color: "from-orange-500 to-red-500" }
+              { page: "home", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", text: "Beranda", delay: "delay-300", color: "from-blue-500 to-cyan-500" },
+              { page: "predict", icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z", text: "Prediksi Harga", delay: "delay-400", color: "from-purple-500 to-pink-500" },
+              { page: "history", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", text: "Riwayat", delay: "delay-500", color: "from-green-500 to-emerald-500" },
+              { page: "about", icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z", text: "Tentang", delay: "delay-600", color: "from-orange-500 to-red-500" }
             ].map((item, index) => (
               <div key={index} className={`transition-all duration-700 ${item.delay} ${
                 showContent ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-8 scale-90'
               }`}>
-                <a 
-                  href={item.href}
-                  className="flex items-center p-4 text-gray-700 rounded-xl hover:text-white transition-all duration-300 transform hover:scale-[1.02] hover:translate-x-1 group relative overflow-hidden border border-gray-200/50 hover:border-transparent"
-                  onClick={onClose}
+                <button 
+                  onClick={() => navigateTo(item.page)}
+                  className="w-full flex items-center p-4 text-gray-700 rounded-xl hover:text-white transition-all duration-300 transform hover:scale-[1.02] hover:translate-x-1 group relative overflow-hidden border border-gray-200/50 hover:border-transparent"
                 >
                   {/* Clean background gradient on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl`}></div>
@@ -142,7 +144,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
-                </a>
+                </button>
               </div>
             ))}
           </nav>
