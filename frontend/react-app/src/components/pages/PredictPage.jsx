@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useToast } from '../../utils/useToast';
+import { api } from '../../utils/api';
+import { validatePredictionInput, parseFormData, formatCurrency, getErrorMessage } from '../../utils/helpers';
+import { SUCCESS_MESSAGES, TOAST_TYPES } from '../../utils/constants'; // Fix: Remove ERROR_MESSAGES
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import FormInput from '../ui/FormInput';
@@ -15,13 +18,24 @@ const PredictPage = () => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [validationErrors, setValidationErrors] = useState({});
+  
   const { success, error: showError } = useToast();
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear validation error for this field
+    if (validationErrors[name]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -29,57 +43,47 @@ const PredictPage = () => {
     setLoading(true);
     setError('');
     setResult(null);
+    setValidationErrors({});
+
+    // Parse and validate data
+    const parsedData = parseFormData(formData);
+    const validation = validatePredictionInput(parsedData);
+    
+    if (!validation.isValid) {
+      setValidationErrors(validation.errors);
+      setLoading(false);
+      showError('Validasi Gagal', 'Mohon periksa data yang dimasukkan');
+      return;
+    }
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/predict', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          luas_m2: parseFloat(formData.luas_m2),
-          jumlah_kamar: parseInt(formData.jumlah_kamar),
-          jarak_kampus_km: parseFloat(formData.jarak_kampus_km)
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`Backend error: ${response.status} - ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      setResult(data);
+      const response = await api.predict(parsedData);
       
-      success(
-        'Prediksi Berhasil!',
-        `Estimasi harga: Rp ${data.prediksi_harga.toLocaleString('id-ID')}`
-      );
+      if (response.success) {
+        setResult(response.data);
+        success(
+          SUCCESS_MESSAGES.PREDICTION_SUCCESS,
+          `Estimasi harga: ${formatCurrency(response.data.prediksi_harga)}`
+        );
+      }
       
     } catch (err) {
-      console.error('Fetch error:', err);
-      
-      if (err.name === 'TypeError' && err.message.includes('Failed to fetch')) {
-        const errorMsg = 'Tidak dapat terhubung ke server. Pastikan backend sudah berjalan di http://127.0.0.1:8000';
-        setError(errorMsg);
-        showError('Koneksi Gagal', errorMsg);
-      } else {
-        const errorMsg = `Error: ${err.message}`;
-        setError(errorMsg);
-        showError('Terjadi Kesalahan', err.message);
-      }
+      const errorMessage = getErrorMessage(err);
+      setError(errorMessage);
+      showError('Prediksi Gagal', errorMessage);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 pt-20 pb-12">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 pt-20 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent mb-4">
             Prediksi Harga Kos
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             Masukkan detail kos/kontrakan untuk mendapatkan estimasi harga menggunakan AI
           </p>
         </div>
@@ -96,6 +100,7 @@ const PredictPage = () => {
                 onChange={handleChange}
                 step="0.1"
                 placeholder="Contoh: 12.5"
+                error={validationErrors.luas_m2}
                 required
               />
 
@@ -107,6 +112,7 @@ const PredictPage = () => {
                 onChange={handleChange}
                 min="1"
                 placeholder="Contoh: 1"
+                error={validationErrors.jumlah_kamar}
                 required
               />
 
@@ -118,6 +124,7 @@ const PredictPage = () => {
                 onChange={handleChange}
                 step="0.1"
                 placeholder="Contoh: 2.5"
+                error={validationErrors.jarak_kampus_km}
                 required
               />
 
@@ -144,14 +151,14 @@ const PredictPage = () => {
           <Card title="Hasil Prediksi">
             {result && (
               <Alert
-                type="success"
+                type={TOAST_TYPES.SUCCESS}
                 title="Prediksi Berhasil"
                 message={
                   <div>
-                    <div className="text-3xl font-bold text-green-600 mb-2">
-                      Rp {result.prediksi_harga.toLocaleString('id-ID')}
+                    <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
+                      {formatCurrency(result.prediksi_harga)}
                     </div>
-                    <p className="text-green-700 text-sm">
+                    <p className="text-green-700 dark:text-green-300 text-sm">
                       Estimasi harga kos berdasarkan data yang Anda masukkan
                     </p>
                   </div>
@@ -161,7 +168,7 @@ const PredictPage = () => {
 
             {error && (
               <Alert
-                type="error"
+                type={TOAST_TYPES.ERROR}
                 title="Terjadi Kesalahan"
                 message={error}
               />
@@ -174,7 +181,7 @@ const PredictPage = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <p className="text-gray-500">Isi form di sebelah kiri untuk mendapatkan prediksi harga</p>
+                <p className="text-gray-500 dark:text-gray-400">Isi form di sebelah kiri untuk mendapatkan prediksi harga</p>
               </div>
             )}
           </Card>

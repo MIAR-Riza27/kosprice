@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const Toast = ({ 
   type = 'info', 
@@ -10,6 +10,14 @@ const Toast = ({
 }) => {
   const [show, setShow] = useState(false);
   const [progress, setProgress] = useState(100);
+
+  // 👈 Fix: Use useCallback to memoize handleClose
+  const handleClose = useCallback(() => {
+    setShow(false);
+    setTimeout(() => {
+      if (onClose) onClose();
+    }, 300);
+  }, [onClose]);
 
   useEffect(() => {
     if (isVisible) {
@@ -30,14 +38,7 @@ const Toast = ({
 
       return () => clearInterval(interval);
     }
-  }, [isVisible, duration]);
-
-  const handleClose = () => {
-    setShow(false);
-    setTimeout(() => {
-      if (onClose) onClose();
-    }, 300);
-  };
+  }, [isVisible, duration, handleClose]); // 👈 Fix: Add handleClose to dependencies
 
   const types = {
     success: {
