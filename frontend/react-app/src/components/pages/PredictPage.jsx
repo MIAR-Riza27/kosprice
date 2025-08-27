@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useToast } from '../../utils/useToast';
 import { api } from '../../utils/api';
 import { validatePredictionInput, parseFormData, formatCurrency, getErrorMessage } from '../../utils/helpers';
-import { SUCCESS_MESSAGES, TOAST_TYPES } from '../../utils/constants'; // Fix: Remove ERROR_MESSAGES
+import { SUCCESS_MESSAGES, TOAST_TYPES } from '../../utils/constants';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import FormInput from '../ui/FormInput';
@@ -79,12 +79,19 @@ const PredictPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 pt-20 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 👈 Fix: Proper header spacing and line-height */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent mb-4">
+          <h1 className="
+            text-3xl md:text-4xl lg:text-5xl font-bold 
+            bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 
+            dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 
+            bg-clip-text text-transparent 
+            mb-6 leading-tight pb-2
+          ">
             Prediksi Harga Kos
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Masukkan detail kos/kontrakan untuk mendapatkan estimasi harga menggunakan AI
+          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            Masukkan detail kos/kontrakan untuk mendapatkan estimasi harga menggunakan teknologi AI
           </p>
         </div>
 
@@ -141,7 +148,12 @@ const PredictPage = () => {
                     <span className="ml-2">Memproses...</span>
                   </div>
                 ) : (
-                  'Prediksi Harga'
+                  <div className="flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                    Prediksi Harga
+                  </div>
                 )}
               </Button>
             </form>
@@ -161,6 +173,11 @@ const PredictPage = () => {
                     <p className="text-green-700 dark:text-green-300 text-sm">
                       Estimasi harga kos berdasarkan data yang Anda masukkan
                     </p>
+                    {result.confidence && (
+                      <p className="text-green-600 dark:text-green-400 text-xs mt-2">
+                        Tingkat kepercayaan: {(result.confidence * 100).toFixed(1)}%
+                      </p>
+                    )}
                   </div>
                 }
               />

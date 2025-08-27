@@ -7,7 +7,8 @@ import HowItWorks from '../sections/HowItWorks';
 const HomePage = ({ navigateTo, isAppLoaded }) => {
   return (
     <main className="flex-1 relative">
-      <div className="h-16"></div>
+      {/* 👈 Fix: Proper spacing untuk Hero section */}
+      <div className="pt-8"></div>
       <div className={`w-full transition-all duration-600 delay-200 ${
         isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}>
