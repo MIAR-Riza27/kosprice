@@ -100,7 +100,7 @@ const Statistics = ({ isAppLoaded }) => {
             Statistik Platform
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Data real-time tentang performa dan penggunaan platform KosPrice
+            Platform masih dalam tahap pengembangan - statistik akan diperbarui seiring pertumbuhan aplikasi
           </p>
         </div>
 

@@ -63,9 +63,9 @@ const Sidebar = ({ isOpen, onClose, navigateTo }) => {
           </h2>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
+            className="p-2 rounded-xl bg-gradient-to-r from-red-500/90 to-red-600/90 hover:from-red-600/90 hover:to-red-700/90 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl group"
           >
-            <svg className="w-5 h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-white group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -106,7 +106,7 @@ const Sidebar = ({ isOpen, onClose, navigateTo }) => {
         <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200/50 dark:border-slate-700/50">
           <div className="text-center">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              KosPrice v2.0.0
+              KosPrice v2.0
             </p>
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
               AI-Powered Price Prediction

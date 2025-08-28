@@ -11,7 +11,7 @@ const AboutPage = () => {
     {
       icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
       title: "Akurasi Tinggi",
-      description: "Model XGBoost dengan akurasi 94.8% berdasarkan data real"
+      description: "Model dalam pengembangan untuk memberikan prediksi terbaik"
     },
     {
       icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
@@ -47,7 +47,7 @@ const AboutPage = () => {
             Tentang KosPrice
           </h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-            Platform prediksi harga kos yang menggunakan teknologi Machine Learning untuk memberikan estimasi harga yang akurat dan terpercaya
+            Platform prediksi harga kos yang sedang dalam pengembangan menggunakan teknologi Machine Learning untuk memberikan estimasi harga yang akurat dan terpercaya
           </p>
         </div>
 
@@ -65,8 +65,8 @@ const AboutPage = () => {
           </div>
           
           <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-center mb-8 max-w-4xl mx-auto">
-            KosPrice adalah platform inovatif yang menggunakan teknologi Machine Learning untuk memprediksi harga kos dan kontrakan. 
-            Dengan menganalisis berbagai faktor seperti luas kamar, jumlah kamar, dan jarak ke kampus, kami memberikan estimasi harga yang akurat dan membantu Anda membuat keputusan yang lebih baik.
+            KosPrice adalah platform inovatif yang sedang dalam pengembangan menggunakan teknologi Machine Learning untuk memprediksi harga kos dan kontrakan. 
+            Dengan menganalisis berbagai faktor seperti luas kamar, jumlah kamar, dan jarak ke kampus, kami bertujuan memberikan estimasi harga yang akurat dan membantu Anda membuat keputusan yang lebih baik.
           </p>
         </Card>
 
@@ -123,16 +123,16 @@ const AboutPage = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">94.8%</div>
-              <div className="text-gray-600 dark:text-gray-300">Tingkat Akurasi</div>
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">~</div>
+              <div className="text-gray-600 dark:text-gray-300">Model dalam pengembangan</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">15K+</div>
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">0</div>
               <div className="text-gray-600 dark:text-gray-300">Prediksi Dibuat</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">3K+</div>
-              <div className="text-gray-600 dark:text-gray-300">Pengguna Aktif</div>
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">0</div>
+              <div className="text-gray-600 dark:text-gray-300">Pengguna Terdaftar</div>
             </div>
           </div>
         </Card>

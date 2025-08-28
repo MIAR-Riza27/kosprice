@@ -101,7 +101,7 @@ const Hero = ({ navigateTo, isAppLoaded }) => {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Akurasi Tinggi</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">94.8% tingkat akurasi</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Model dalam pengembangan</p>
               </div>
 
               <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-slate-700/50 hover:scale-105 transition-all duration-300">

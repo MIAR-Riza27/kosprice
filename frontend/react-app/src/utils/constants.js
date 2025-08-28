@@ -110,8 +110,8 @@ export const GRADIENTS = {
 
 // Statistics Data
 export const STATS_DATA = {
-  PREDICTIONS: 15420,
-  USERS: 3250,
-  ACCURACY: 94.8,
-  LOCATIONS: 127
+  PREDICTIONS: 0,
+  USERS: 0,
+  ACCURACY: 0,
+  LOCATIONS: 0
 };

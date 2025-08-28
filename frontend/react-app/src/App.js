@@ -12,6 +12,7 @@ import AboutPage from "./components/pages/AboutPage";
 import Breadcrumbs from "./components/utilities/Breadcrumbs";
 import BackToTop from "./components/utilities/BackToTop";
 import DarkModeToggle from "./components/utilities/DarkModeToggle";
+import SidebarToggle from "./components/utilities/SidebarToggle";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -148,6 +149,13 @@ function App() {
         
         <ErrorBoundary>
           <DarkModeToggle />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <SidebarToggle 
+            onToggleSidebar={toggleSidebar} 
+            isSidebarOpen={isSidebarOpen} 
+          />
         </ErrorBoundary>
         
         <ToastContainer toasts={toasts} />
