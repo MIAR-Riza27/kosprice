@@ -85,10 +85,10 @@ function App() {
       <div className="min-h-screen flex flex-col relative overflow-hidden transition-colors duration-500">
         {/* Enhanced Animated Background with Dark Mode */}
         <div className="fixed inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 transition-colors duration-700"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-background-secondary via-primary-50 to-accent-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 transition-colors duration-700"></div>
           
           <div 
-            className="absolute w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-400/20 dark:from-blue-500/30 dark:to-purple-500/30 rounded-full blur-3xl transition-all duration-500"
+            className="absolute w-96 h-96 bg-gradient-to-r from-primary-400/20 to-accent-400/20 dark:from-primary-500/30 dark:to-accent-500/30 rounded-full blur-3xl transition-all duration-500"
             style={{
               left: mousePosRef.current.x - 192,
               top: mousePosRef.current.y - 192,
@@ -111,12 +111,12 @@ function App() {
                   transform: `rotate(${i * 30}deg)`
                 }}
               >
-                <div 
+                  <div 
                   className={`
                     w-${4 + (i % 3) * 2} h-${4 + (i % 3) * 2} 
-                    ${i % 3 === 0 ? 'bg-blue-300/20 dark:bg-blue-400/30' : 
-                      i % 3 === 1 ? 'bg-purple-300/20 dark:bg-purple-400/30' : 
-                      'bg-indigo-300/20 dark:bg-indigo-400/30'}
+                    ${i % 3 === 0 ? 'bg-primary-300/20 dark:bg-primary-400/30' : 
+                      i % 3 === 1 ? 'bg-accent-300/20 dark:bg-accent-400/30' : 
+                      'bg-highlight-300/20 dark:bg-highlight-400/30'}
                     ${i % 2 === 0 ? 'rounded-full' : 'rounded-lg'}
                     animate-float
                   `}
