@@ -18,9 +18,9 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
   return (
     <nav className={`
       fixed top-0 left-0 right-0 z-[100]
-      bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 
-      dark:from-slate-800 dark:via-slate-900 dark:to-slate-800
-      shadow-xl backdrop-blur-md border-b border-blue-500/20 dark:border-slate-700/50
+      bg-gradient-to-r from-primary-600 to-primary-700 
+      dark:from-secondary-800 dark:to-secondary-900
+      shadow-xl backdrop-blur-md border-b border-primary-500/20 dark:border-secondary-700/50
       transition-all duration-500 transform
       ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
       ${scrolled ? 'bg-opacity-95 shadow-2xl' : 'bg-opacity-90'}
@@ -47,8 +47,8 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
       </div>
 
       {/* Enhanced gradient wave - more subtle */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 opacity-40">
-        <div className={`h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform transition-transform duration-[3000ms] ${
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-400 to-primary-500 opacity-40">
+        <div className={`h-full bg-white/20 transform transition-transform duration-[3000ms] ${
           isLoaded ? 'translate-x-full' : '-translate-x-full'
         }`} style={{ animation: 'shimmer 4s ease-in-out infinite' }}></div>
       </div>
@@ -66,7 +66,7 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
                 shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105
                 border backdrop-blur-sm overflow-hidden
                 ${isSidebarOpen 
-                  ? 'bg-gradient-to-r from-red-500/90 to-red-600/90 text-white border-red-400/50 shadow-red-500/25' 
+                  ? 'bg-error-500 text-white border-error-400/50 shadow-error-500/25' 
                   : 'bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white/40'
                 }
               `}
@@ -74,8 +74,8 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
               {/* Background gradient overlay */}
               <div className={`absolute inset-0 transition-all duration-300 rounded-xl ${
                 isSidebarOpen
-                  ? 'bg-gradient-to-r from-red-300/20 to-red-400/20 opacity-100'
-                  : 'bg-gradient-to-r from-blue-400/10 to-purple-400/10 opacity-0 group-hover:opacity-100'
+                  ? 'bg-error-300/20 opacity-100'
+                  : 'bg-primary-400/10 opacity-0 group-hover:opacity-100'
               }`}></div>
               
               {/* Content */}
@@ -105,24 +105,24 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
               <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 rounded-full transition-all duration-300 ${
                 isSidebarOpen 
                   ? 'w-3/4 bg-white shadow-lg' 
-                  : 'w-0 bg-yellow-300 group-hover:w-1/2'
+                  : 'w-0 bg-highlight-300 group-hover:w-1/2'
               }`}></div>
               
               {/* Shine effect */}
-              <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 group-hover:animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 -top-2 -bottom-2 bg-white/5 transform -skew-x-12 group-hover:animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
             
             {/* Enhanced Logo */}
             <div className={`flex-shrink-0 transition-all duration-500 delay-150 ${
               isLoaded ? 'translate-x-0 opacity-100 scale-100' : '-translate-x-8 opacity-0 scale-95'
             }`}>
-              <h1 className="text-white text-2xl font-bold hover:text-yellow-300 transition-all duration-300 cursor-pointer group relative">
+              <h1 className="text-white text-2xl font-bold hover:text-highlight-300 transition-all duration-300 cursor-pointer group relative">
                 <span className="relative z-10">
-                  Kos<span className="text-yellow-300 font-extrabold">Price</span>
+                  Kos<span className="text-highlight-300 font-extrabold">Price</span>
                 </span>
                 {/* Logo glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 to-orange-400/20 opacity-0 group-hover:opacity-100 rounded-lg blur-lg transition-opacity duration-300"></div>
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-300 to-orange-400 group-hover:w-full transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-highlight-300/20 opacity-0 group-hover:opacity-100 rounded-lg blur-lg transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight-300 group-hover:w-full transition-all duration-300"></div>
               </h1>
             </div>
           </div>
@@ -163,7 +163,7 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
                   shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105
                   border backdrop-blur-sm overflow-hidden
                   ${currentPage === item.page 
-                    ? 'bg-gradient-to-r from-yellow-400 to-orange-400 text-white border-yellow-300/50 shadow-yellow-500/25' 
+                    ? 'bg-highlight-400 text-white border-highlight-300/50 shadow-highlight-500/25' 
                     : 'bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white/40'
                   }
                   ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}
@@ -173,8 +173,8 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
                 {/* Background gradient overlay */}
                 <div className={`absolute inset-0 transition-all duration-300 rounded-xl ${
                   currentPage === item.page
-                    ? 'bg-gradient-to-r from-yellow-300/20 to-orange-300/20 opacity-100'
-                    : 'bg-gradient-to-r from-blue-400/10 to-purple-400/10 opacity-0 group-hover:opacity-100'
+                    ? 'bg-highlight-300/20 opacity-100'
+                    : 'bg-primary-400/10 opacity-0 group-hover:opacity-100'
                 }`}></div>
                 
                 {/* Content */}
@@ -189,11 +189,11 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen, navigateTo, currentPage }) => 
                 <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 rounded-full transition-all duration-300 ${
                   currentPage === item.page 
                     ? 'w-3/4 bg-white shadow-lg' 
-                    : 'w-0 bg-yellow-300 group-hover:w-1/2'
+                    : 'w-0 bg-highlight-300 group-hover:w-1/2'
                 }`}></div>
                 
                 {/* Shine effect */}
-                <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 group-hover:animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 -top-2 -bottom-2 bg-white/5 transform -skew-x-12 group-hover:animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             ))}
           </div>

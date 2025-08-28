@@ -28,9 +28,13 @@ const BackToTop = () => {
       onClick={scrollToTop}
       className={`
         fixed bottom-8 right-8 z-50 p-3 rounded-full
-        bg-gradient-to-r from-blue-500 to-purple-500 text-white
+        bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm
+        hover:bg-white/90 dark:hover:bg-background-dark/90
+        text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400
+        border border-primary-200/60 dark:border-primary-500/70
+        hover:border-primary-300/80 dark:hover:border-primary-400/80
         shadow-lg hover:shadow-xl transform transition-all duration-300
-        hover:scale-110 hover:from-blue-400 hover:to-purple-400
+        hover:scale-110
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}
       `}
       aria-label="Back to top"

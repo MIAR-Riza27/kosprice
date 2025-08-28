@@ -44,11 +44,13 @@ const DarkModeToggle = () => {
       disabled={isAnimating}
       className={`
         fixed top-20 right-4 z-40 p-3 rounded-xl
-        bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm
-        border border-gray-200/50 dark:border-slate-700/50
+        bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm
+        hover:bg-white/90 dark:hover:bg-background-dark/90
+        border border-primary-200/60 dark:border-primary-500/70
+        hover:border-primary-300/80 dark:hover:border-primary-400/80
         shadow-lg hover:shadow-xl transform transition-all duration-300
-        hover:scale-110 text-gray-600 dark:text-gray-300
-        hover:text-blue-600 dark:hover:text-blue-400
+        hover:scale-110 text-gray-700 dark:text-gray-200
+        hover:text-primary-600 dark:hover:text-primary-400
         disabled:opacity-50 disabled:cursor-not-allowed
         ${isAnimating ? 'animate-pulse' : ''}
       `}

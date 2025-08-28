@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Card = ({ children, title, className = '', ...props }) => {
   return (
     <div 
-      className={`bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gray-200/50 dark:border-slate-700/50 transition-colors duration-300 ${className}`}
+      className={`bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gray-200/50 dark:border-secondary-700/50 transition-colors duration-300 ${className}`}
       {...props}
     >
       {title && (

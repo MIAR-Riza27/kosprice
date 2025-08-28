@@ -19,7 +19,7 @@ const Loader = ({
 
   return (
     <div className={`flex items-center justify-center ${className}`}>
-      <div className={`animate-spin rounded-full ${sizes[size]} ${borderSizes[size]} border-blue-500 border-t-transparent ${text ? 'mr-2' : ''}`}></div>
+      <div className={`animate-spin rounded-full ${sizes[size]} ${borderSizes[size]} border-primary-500 border-t-transparent ${text ? 'mr-2' : ''}`}></div>
       {text && <span>{text}</span>}
     </div>
   );

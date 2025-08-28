@@ -100,35 +100,35 @@ export const DEFAULTS = {
 
 // Gradient Colors - Berdasarkan warna yang sudah terpakai
 export const GRADIENTS = {
-  // Primary gradients yang sudah digunakan
+  // Primary gradients - single color variations
   PRIMARY: 'from-primary-500 to-primary-600',
-  BRAND: 'from-primary-600 via-accent-600 to-primary-800',
-  HEADER: 'from-primary-600 via-purple-600 to-indigo-600',
+  BRAND: 'from-primary-600 to-primary-800',
+  HEADER: 'from-primary-600 to-primary-700',
   
-  // Accent gradients
+  // Accent gradients - single color variations
   ACCENT: 'from-accent-500 to-accent-600',
-  PURPLE_PINK: 'from-purple-500 to-pink-500',
+  PURPLE_PINK: 'from-primary-500 to-primary-600',
   
-  // Highlight gradients
-  HIGHLIGHT: 'from-highlight-300 to-warning-400',
-  YELLOW_ORANGE: 'from-yellow-400 to-orange-400',
+  // Highlight gradients - single color variations
+  HIGHLIGHT: 'from-highlight-500 to-highlight-600',
+  YELLOW_ORANGE: 'from-accent-500 to-accent-600',
   
-  // Status gradients
+  // Status gradients - single color variations
   SUCCESS: 'from-success-500 to-success-600',
   WARNING: 'from-warning-500 to-warning-600',
   ERROR: 'from-error-500 to-error-600',
   INFO: 'from-primary-500 to-primary-600',
   
-  // Background gradients
-  PAGE_LIGHT: 'from-gray-50 via-blue-50 to-indigo-100',
-  PAGE_DARK: 'from-gray-900 via-slate-900 to-indigo-950',
+  // Background gradients - subtle single color variations
+  PAGE_LIGHT: 'from-background-secondary to-background-tertiary',
+  PAGE_DARK: 'from-background-dark to-background-dark-secondary',
   CARD: 'from-background-primary to-background-secondary',
   
-  // Interactive gradients
-  BUTTON_PRIMARY: 'from-primary-500 to-accent-500',
+  // Interactive gradients - gentle single color variations
+  BUTTON_PRIMARY: 'from-primary-500 to-primary-600',
   BUTTON_SECONDARY: 'from-secondary-500 to-secondary-600',
-  HOVER_LIGHT: 'from-primary-400/10 to-accent/10',
-  HOVER_HIGHLIGHT: 'from-highlight-300/20 to-warning-400/20'
+  HOVER_LIGHT: 'from-primary-400/10 to-primary-500/10',
+  HOVER_HIGHLIGHT: 'from-highlight-500/20 to-highlight-600/20'
 };
 
 // Theme Colors - Mapping ke custom colors
@@ -158,10 +158,10 @@ export const THEME_COLORS = {
 // Component specific color mappings
 export const COMPONENT_COLORS = {
   NAVBAR: {
-    bg: 'from-primary-600 via-primary-700 to-primary-800',
-    active: 'from-highlight-400 to-warning-400',
-    logo: 'text-highlight-300',
-    wave: 'from-primary-400 via-accent to-primary-400'
+    bg: 'from-primary-600 to-primary-700',
+    active: 'from-highlight-500 to-highlight-600',
+    logo: 'text-highlight-500',
+    wave: 'from-primary-400 to-primary-500'
   },
   BUTTON: {
     primary: 'bg-primary-600 hover:bg-primary-700',

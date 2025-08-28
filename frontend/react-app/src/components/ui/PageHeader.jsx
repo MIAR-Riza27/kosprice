@@ -20,8 +20,8 @@ const PageHeader = ({
     <div className={`text-center ${className}`}>
       <h1 className={`
         ${sizeClasses[size]} font-bold 
-        bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 
-        dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 
+        bg-gradient-to-br from-primary-600 to-primary-800 
+        dark:from-primary-400 dark:to-primary-600 
         bg-clip-text text-transparent 
         mb-6 leading-[1.1] pb-4
         ${titleClassName}

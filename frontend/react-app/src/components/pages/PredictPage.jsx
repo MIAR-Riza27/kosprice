@@ -9,7 +9,7 @@ import FormInput from '../ui/FormInput';
 import Loader from '../ui/Loader';
 import Alert from '../feedback/Alert';
 
-const PredictPage = () => {
+const PredictPage = ({ isAppLoaded = false }) => {
   const [formData, setFormData] = useState({
     luas_m2: '',
     jumlah_kamar: '',
@@ -77,14 +77,16 @@ const PredictPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 pt-20 pb-12">
+    <div className={`min-h-screen pt-20 pb-12 transition-all duration-600 ${
+      isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+    }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 👈 Fix: Proper header spacing and line-height */}
         <div className="text-center mb-12">
           <h1 className="
             text-3xl md:text-4xl lg:text-5xl font-bold 
-            bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 
-            dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 
+            bg-gradient-to-r from-primary-600 to-primary-800 
+            dark:from-primary-400 dark:to-primary-600 
             bg-clip-text text-transparent 
             mb-6 leading-tight pb-2
           ">
@@ -167,14 +169,14 @@ const PredictPage = () => {
                 title="Prediksi Berhasil"
                 message={
                   <div>
-                    <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
+                    <div className="text-3xl font-bold text-success-600 dark:text-success-400 mb-2">
                       {formatCurrency(result.prediksi_harga)}
                     </div>
-                    <p className="text-green-700 dark:text-green-300 text-sm">
+                    <p className="text-success-700 dark:text-success-300 text-sm">
                       Estimasi harga kos berdasarkan data yang Anda masukkan
                     </p>
                     {result.confidence && (
-                      <p className="text-green-600 dark:text-green-400 text-xs mt-2">
+                      <p className="text-success-600 dark:text-success-400 text-xs mt-2">
                         Tingkat kepercayaan: {(result.confidence * 100).toFixed(1)}%
                       </p>
                     )}
@@ -193,7 +195,7 @@ const PredictPage = () => {
 
             {!result && !error && !loading && (
               <div className="text-center py-12">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 opacity-50">
+                <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-4 opacity-50">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>

@@ -15,7 +15,7 @@ const EmptyState = ({
 
   return (
     <div className={`text-center py-12 ${className}`}>
-      <div className="w-16 h-16 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full flex items-center justify-center mx-auto mb-4 opacity-50">
+      <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4 opacity-50">
         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={icons[icon]} />
         </svg>

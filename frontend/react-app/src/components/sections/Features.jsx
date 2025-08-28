@@ -5,37 +5,37 @@ const Features = ({ isAppLoaded }) => {
     { 
       title: "Machine Learning", 
       desc: "Prediksi akurat menggunakan algoritma XGBoost yang telah dilatih dengan data real",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-primary-500 to-primary-600",
       delay: 300
     },
     { 
       title: "Analisis Data", 
       desc: "Visualisasi data komprehensif untuk memahami tren harga kos di berbagai lokasi",
-      color: "from-purple-500 to-pink-500",
+      color: "from-accent-500 to-accent-600",
       delay: 350
     },
     { 
       title: "Prediksi Presisi", 
       desc: "Estimasi harga berdasarkan lokasi, luas kamar, fasilitas, dan faktor-faktor lainnya",
-      color: "from-green-500 to-emerald-500",
+      color: "from-success-500 to-success-600",
       delay: 400
     },
     { 
       title: "Interface Modern", 
       desc: "Antarmuka yang responsif dan mudah digunakan dengan teknologi React terbaru",
-      color: "from-orange-500 to-red-500",
+      color: "from-warning-500 to-warning-600",
       delay: 450
     },
     { 
       title: "Real-time", 
       desc: "Prediksi instan dengan API yang cepat menggunakan FastAPI dan Python",
-      color: "from-indigo-500 to-blue-500",
+      color: "from-primary-500 to-primary-600",
       delay: 500
     },
     { 
       title: "Riwayat Prediksi", 
       desc: "Simpan dan lihat kembali prediksi sebelumnya untuk analisis lebih lanjut",
-      color: "from-pink-500 to-purple-500",
+      color: "from-accent-500 to-accent-600",
       delay: 550
     }
   ];
@@ -46,7 +46,7 @@ const Features = ({ isAppLoaded }) => {
         {features.map((item, index) => (
           <div 
             key={index}
-            className={`group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 lg:p-8 transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 border border-gray-200/50 dark:border-slate-700/50 relative overflow-hidden ${
+            className={`group bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 lg:p-8 transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 border border-gray-200/50 dark:border-secondary-700/50 relative overflow-hidden ${
               isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
             style={{ transitionDelay: `${item.delay}ms` }}

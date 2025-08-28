@@ -7,137 +7,167 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // KosPrice Brand Colors - Berdasarkan warna yang sudah terpakai
+        // 🎨 KOSRICE SOFT & GENTLE THEME
+        // Primary: Soft Blue-Purple (Gentle, trustworthy)
         primary: {
-          50: '#eff6ff',    // blue-50
-          100: '#dbeafe',   // blue-100
-          200: '#bfdbfe',   // blue-200
-          300: '#93c5fd',   // blue-300
-          400: '#60a5fa',   // blue-400
-          500: '#3b82f6',   // blue-500 - Main primary
-          600: '#2563eb',   // blue-600 - Primary brand
-          700: '#1d4ed8',   // blue-700
-          800: '#1e3a8a',   // blue-800
-          900: '#1e293b',   // blue-900
-          DEFAULT: '#2563eb'
+          50: '#f8faff',    // Very soft blue tint
+          100: '#f0f4ff',   // Ultra light blue-purple
+          200: '#e4e9ff',   // Soft blue-purple
+          300: '#d1d9ff',   // Light blue-purple
+          400: '#b8c5ff',   // Medium-light blue-purple
+          500: '#9ca3ff',   // Soft vibrant blue-purple
+          600: '#7c7dff',   // Main primary - Gentle blue-purple
+          700: '#6366f1',   // Deeper but still soft
+          800: '#5855d6',   // Rich but muted
+          900: '#4c46a3',   // Deep muted purple
+          DEFAULT: '#7c7dff' // Soft primary brand
         },
+        
+        // Secondary: Warm soft grays
         secondary: {
-          50: '#f8fafc',    // slate-50
-          100: '#f1f5f9',   // slate-100
-          200: '#e2e8f0',   // slate-200
-          300: '#cbd5e1',   // slate-300
-          400: '#94a3b8',   // slate-400
-          500: '#64748b',   // slate-500
-          600: '#475569',   // slate-600
-          700: '#334155',   // slate-700
-          800: '#1e293b',   // slate-800
-          900: '#0f172a',   // slate-900
-          DEFAULT: '#64748b'
+          50: '#fafbfc',    // Warm white
+          100: '#f4f6f8',   // Very light warm gray
+          200: '#e8ecf0',   // Light warm gray
+          300: '#d7dde3',   // Soft gray
+          400: '#b0bac7',   // Medium soft gray
+          500: '#8892a0',   // Main secondary - Soft balanced gray
+          600: '#6b7785',   // Muted gray
+          700: '#515b6b',   // Deep soft gray
+          800: '#3d4651',   // Dark soft gray
+          900: '#2a3138',   // Darkest soft gray
+          DEFAULT: '#8892a0' // Soft secondary
         },
+        
+        // Accent: Soft Golden Yellow (Warm, welcoming)
         accent: {
-          50: '#faf5ff',    // purple-50
-          100: '#f3e8ff',   // purple-100
-          200: '#e9d5ff',   // purple-200
-          300: '#d8b4fe',   // purple-300
-          400: '#c084fc',   // purple-400
-          500: '#a855f7',   // purple-500 - Main accent
-          600: '#9333ea',   // purple-600
-          700: '#7c3aed',   // purple-700
-          800: '#6b21a8',   // purple-800
-          900: '#581c87',   // purple-900
-          DEFAULT: '#a855f7'
+          50: '#fffdf7',    // Cream white
+          100: '#fef8e7',   // Very light cream
+          200: '#fdefc4',   // Soft cream
+          300: '#fce085',   // Light golden
+          400: '#fbcd4a',   // Soft golden
+          500: '#f5b82e',   // Main accent - Soft warm gold
+          600: '#e09d1a',   // Gentle orange-gold
+          700: '#c87f15',   // Muted deep gold
+          800: '#a86318',   // Soft bronze
+          900: '#8b4513',   // Warm brown-gold
+          DEFAULT: '#f5b82e' // Soft accent
         },
+        
+        // Highlight: Gentle Sunshine Yellow
         highlight: {
-          50: '#fffbeb',    // yellow-50
-          100: '#fef3c7',   // yellow-100
-          200: '#fde68a',   // yellow-200
-          300: '#fcd34d',   // yellow-300 - Main highlight
-          400: '#fbbf24',   // yellow-400
-          500: '#f59e0b',   // yellow-500
-          600: '#d97706',   // yellow-600
-          700: '#b45309',   // yellow-700
-          800: '#92400e',   // yellow-800
-          900: '#78350f',   // yellow-900
-          DEFAULT: '#fcd34d'
+          50: '#fffef5',    // Soft cream
+          100: '#fffbea',   // Light cream
+          200: '#fff4c4',   // Gentle yellow
+          300: '#ffe994',   // Soft sunshine
+          400: '#ffdb5c',   // Medium soft yellow
+          500: '#ffc93c',   // Main highlight - Gentle sunshine
+          600: '#f0b429',   // Soft orange-yellow
+          700: '#d49a1d',   // Muted golden
+          800: '#b8801a',   // Gentle bronze
+          900: '#996817',   // Soft brown-gold
+          DEFAULT: '#ffc93c' // Soft highlight
         },
+        
+        // Success: Soft Fresh Green
         success: {
-          50: '#ecfdf5',    // green-50
-          100: '#d1fae5',   // green-100
-          200: '#a7f3d0',   // green-200
-          300: '#6ee7b7',   // green-300
-          400: '#34d399',   // green-400
-          500: '#10b981',   // green-500 - Main success
-          600: '#059669',   // green-600
-          700: '#047857',   // green-700
-          800: '#065f46',   // green-800
-          900: '#064e3b',   // green-900
-          DEFAULT: '#10b981'
+          50: '#f6fdf9',    // Very light mint
+          100: '#ecfbf2',   // Light mint
+          200: '#d1f7e3',   // Soft mint green
+          300: '#a7f0c8',   // Light fresh green
+          400: '#6ee7a8',   // Medium soft green
+          500: '#4dd688',   // Main success - Soft fresh green
+          600: '#3cc46f',   // Gentle green
+          700: '#32a85c',   // Muted green
+          800: '#2d8a4c',   // Deep soft green
+          900: '#26723f',   // Dark muted green
+          DEFAULT: '#4dd688' // Soft success
         },
+        
+        // Warning: Soft Peach-Orange
         warning: {
-          50: '#fffbeb',    // orange-50
-          100: '#fef3c7',   // orange-100
-          200: '#fed7aa',   // orange-200
-          300: '#fdba74',   // orange-300
-          400: '#fb923c',   // orange-400 - Main warning
-          500: '#f97316',   // orange-500
-          600: '#ea580c',   // orange-600
-          700: '#c2410c',   // orange-700
-          800: '#9a3412',   // orange-800
-          900: '#7c2d12',   // orange-900
-          DEFAULT: '#fb923c'
+          50: '#fffbf5',    // Very light peach
+          100: '#fff4e6',   // Light peach
+          200: '#ffe4c4',   // Soft peach
+          300: '#ffce8a',   // Medium peach
+          400: '#ffb347',   // Vibrant soft orange
+          500: '#ff9a1f',   // Main warning - Soft warm orange
+          600: '#e8841c',   // Gentle orange
+          700: '#d16d19',   // Muted orange
+          800: '#b85818',   // Deep soft orange
+          900: '#9a4717',   // Dark muted orange
+          DEFAULT: '#ff9a1f' // Soft warning
         },
+        
+        // Error: Soft Rose-Red
         error: {
-          50: '#fef2f2',    // red-50
-          100: '#fee2e2',   // red-100
-          200: '#fecaca',   // red-200
-          300: '#fca5a5',   // red-300
-          400: '#f87171',   // red-400
-          500: '#ef4444',   // red-500 - Main error
-          600: '#dc2626',   // red-600
-          700: '#b91c1c',   // red-700
-          800: '#991b1b',   // red-800
-          900: '#7f1d1d',   // red-900
-          DEFAULT: '#ef4444'
+          50: '#fef7f7',    // Very light rose
+          100: '#feebeb',   // Light rose
+          200: '#fdd8d8',   // Soft rose
+          300: '#fcb3b3',   // Medium soft red
+          400: '#f87f7f',   // Vibrant soft red
+          500: '#f56565',   // Main error - Soft red
+          600: '#e53e3e',   // Gentle red
+          700: '#c53030',   // Muted red
+          800: '#9c2626',   // Deep soft red
+          900: '#742a2a',   // Dark muted red
+          DEFAULT: '#e53e3e' // Soft error
         },
-        // Extended colors untuk kombinasi gradient yang sudah terpakai
-        'blue-purple': {
-          'from': '#3b82f6',  // blue-500
-          'to': '#a855f7'     // purple-500
-        },
-        'yellow-orange': {
-          'from': '#fcd34d',  // yellow-300
-          'to': '#fb923c'     // orange-400
-        },
-        'purple-pink': {
-          'from': '#a855f7',  // purple-500
-          'to': '#ec4899'     // pink-500
-        },
-        // Text colors
+        
+        // Text colors (Softer, easier on eyes)
         text: {
-          primary: '#1f2937',     // gray-800
-          secondary: '#6b7280',   // gray-500
-          light: '#9ca3af',       // gray-400
-          white: '#ffffff',
-          DEFAULT: '#1f2937'
+          primary: '#2d3748',     // Soft dark gray (main content)
+          secondary: '#4a5568',   // Medium soft gray (secondary)
+          light: '#718096',       // Light soft gray (muted)
+          white: '#ffffff',       // Pure white
+          dark: '#1a202c',        // Soft dark (dark mode)
+          DEFAULT: '#2d3748'      // Soft default text
         },
-        // Background colors
+        
+        // Background colors (Gentle, comfortable)
         background: {
-          primary: '#ffffff',
-          secondary: '#f8fafc',   // slate-50
-          tertiary: '#f1f5f9',    // slate-100
-          dark: '#0f172a',        // slate-900
-          DEFAULT: '#ffffff'
+          primary: '#ffffff',     // Pure white
+          secondary: '#fafbfc',   // Very soft gray
+          tertiary: '#f4f6f8',    // Light soft gray
+          dark: '#1a202c',        // Soft dark (dark mode)
+          'dark-secondary': '#2d3748', // Dark mode secondary
+          'dark-tertiary': '#4a5568',  // Dark mode tertiary
+          DEFAULT: '#ffffff'      // Default background
         }
       },
-      // Gradient combinations yang sudah terpakai
+      // 🎨 Soft & gentle gradients untuk KosPrice
       backgroundImage: {
         'gradient-primary': 'linear-gradient(to right, var(--tw-gradient-stops))',
-        'gradient-brand': 'linear-gradient(135deg, #2563eb 0%, #a855f7 50%, #1d4ed8 100%)',
-        'gradient-highlight': 'linear-gradient(135deg, #fcd34d 0%, #fb923c 100%)',
-        'gradient-success': 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-        'gradient-header': 'linear-gradient(135deg, #2563eb 0%, #9333ea 50%, #1d4ed8 100%)',
-        'gradient-page': 'linear-gradient(135deg, #f8fafc 0%, #dbeafe 50%, #e0e7ff 100%)',
-        'gradient-page-dark': 'linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #312e81 100%)'
+        
+        // Soft brand gradients (Gentle blue-purple)
+        'gradient-brand': 'linear-gradient(135deg, #7c7dff 0%, #9ca3ff 50%, #b8c5ff 100%)', 
+        'gradient-brand-dark': 'linear-gradient(135deg, #4c46a3 0%, #5855d6 50%, #6366f1 100%)',
+        
+        // Gentle highlight gradients
+        'gradient-highlight': 'linear-gradient(135deg, #f5b82e 0%, #ffc93c 100%)', 
+        'gradient-highlight-soft': 'linear-gradient(135deg, #fbcd4a 0%, #f5b82e 50%, #ffc93c 100%)',
+        
+        // Soft success gradients
+        'gradient-success': 'linear-gradient(135deg, #4dd688 0%, #3cc46f 100%)', 
+        
+        // Gentle header gradients
+        'gradient-header': 'linear-gradient(135deg, #7c7dff 0%, #9ca3ff 30%, #f5b82e 100%)', 
+        'gradient-header-dark': 'linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%)',
+        
+        // Soft page backgrounds
+        'gradient-page': 'linear-gradient(135deg, #ffffff 0%, #fafbfc 50%, #f4f6f8 100%)', 
+        'gradient-page-dark': 'linear-gradient(135deg, #1a202c 0%, #2d3748 30%, #4a5568 100%)',
+        
+        // Gentle card gradients
+        'gradient-card': 'linear-gradient(135deg, #ffffff 0%, #fafbfc 100%)',
+        'gradient-card-dark': 'linear-gradient(135deg, #2d3748 0%, #4a5568 100%)',
+        
+        // Soft interactive gradients
+        'gradient-interactive': 'linear-gradient(135deg, #7c7dff 0%, #f5b82e 100%)',
+        'gradient-interactive-hover': 'linear-gradient(135deg, #6366f1 0%, #e09d1a 100%)',
+        
+        // Dreamy pastel gradients
+        'gradient-dreamy': 'linear-gradient(135deg, #b8c5ff 0%, #ffc93c 50%, #4dd688 100%)',
+        'gradient-sunset': 'linear-gradient(135deg, #ffc93c 0%, #ff9a1f 50%, #f56565 100%)'
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

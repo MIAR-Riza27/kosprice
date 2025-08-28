@@ -31,23 +31,23 @@ const Footer = () => {
   return (
     <footer 
       ref={footerRef}
-      className={`bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white mt-auto relative overflow-hidden transition-all duration-1000 ${
+      className={`bg-gradient-to-br from-secondary-800 to-background-dark text-white mt-auto relative overflow-hidden transition-all duration-1000 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className={`absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 transform transition-transform duration-[3000ms] ${
+        <div className={`absolute inset-0 bg-primary-600 transform transition-transform duration-[3000ms] ${
           isLoaded ? 'translate-x-0' : '-translate-x-full'
         }`}></div>
         {/* Floating circles animation */}
-        <div className={`absolute top-10 left-10 w-20 h-20 bg-blue-400 rounded-full opacity-20 transition-all duration-[2000ms] ${
+        <div className={`absolute top-10 left-10 w-20 h-20 bg-primary-400 rounded-full opacity-20 transition-all duration-[2000ms] ${
           isLoaded ? 'scale-100 translate-y-0' : 'scale-0 translate-y-8'
         }`}></div>
-        <div className={`absolute top-20 right-20 w-16 h-16 bg-yellow-400 rounded-full opacity-20 transition-all duration-[2500ms] delay-300 ${
+        <div className={`absolute top-20 right-20 w-16 h-16 bg-highlight-400 rounded-full opacity-20 transition-all duration-[2500ms] delay-300 ${
           isLoaded ? 'scale-100 translate-y-0' : 'scale-0 translate-y-8'
         }`}></div>
-        <div className={`absolute bottom-10 left-1/2 w-12 h-12 bg-indigo-400 rounded-full opacity-20 transition-all duration-[1800ms] delay-500 ${
+        <div className={`absolute bottom-10 left-1/2 w-12 h-12 bg-accent-400 rounded-full opacity-20 transition-all duration-[1800ms] delay-500 ${
           isLoaded ? 'scale-100 translate-y-0' : 'scale-0 translate-y-8'
         }`}></div>
       </div>
@@ -59,10 +59,10 @@ const Footer = () => {
           <div className={`transition-all duration-800 delay-200 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <h3 className="text-lg font-bold mb-4 hover:text-yellow-300 transition-colors duration-300 cursor-pointer">
-              Kos<span className="text-yellow-300 animate-pulse">Price</span>
+            <h3 className="text-lg font-bold mb-4 hover:text-highlight-300 transition-colors duration-300 cursor-pointer">
+              Kos<span className="text-highlight-300 animate-pulse">Price</span>
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed hover:text-gray-200 transition-colors duration-300">
+            <p className="text-secondary-300 text-sm leading-relaxed hover:text-secondary-200 transition-colors duration-300">
               Aplikasi prediksi harga kos/kontrakan menggunakan Machine Learning. 
               Dapatkan estimasi harga yang akurat berdasarkan lokasi, luas, dan fasilitas.
             </p>
@@ -72,7 +72,7 @@ const Footer = () => {
               {['ML', 'React', 'Python'].map((tech, index) => (
                 <span 
                   key={tech}
-                  className={`px-2 py-1 bg-blue-600 text-xs rounded-full text-white transform transition-all duration-500 hover:scale-110 hover:bg-blue-500 ${
+                  className={`px-2 py-1 bg-primary-600 text-xs rounded-full text-white transform transition-all duration-500 hover:scale-110 hover:bg-primary-500 ${
                     isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
                   }`}
                   style={{ transitionDelay: `${600 + index * 100}ms` }}
@@ -87,7 +87,7 @@ const Footer = () => {
           <div className={`transition-all duration-800 delay-400 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <h4 className="text-md font-semibold mb-4 text-yellow-300">Menu Cepat</h4>
+            <h4 className="text-md font-semibold mb-4 text-highlight-300">Menu Cepat</h4>
             <ul className="space-y-3 text-sm">
               {[ 
                 { href: "#home", text: "Beranda" },
@@ -103,7 +103,7 @@ const Footer = () => {
                 >
                   <a 
                     href={item.href} 
-                    className="text-gray-300 hover:text-yellow-300 transition-all duration-300 flex items-center group transform hover:translate-x-2"
+                    className="text-gray-300 hover:text-highlight-300 transition-all duration-300 flex items-center group transform hover:translate-x-2"
                   >
                     <span className="group-hover:font-medium">{item.text}</span>
                   </a>
@@ -116,13 +116,13 @@ const Footer = () => {
           <div className={`transition-all duration-800 delay-600 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <h4 className="text-md font-semibold mb-4 text-yellow-300">Teknologi</h4>
+            <h4 className="text-md font-semibold mb-4 text-highlight-300">Teknologi</h4>
             <ul className="space-y-3 text-sm text-gray-300">
               {[ 
-                { text: "Python & FastAPI", color: "hover:text-green-400" },
-                { text: "React & Tailwind CSS", color: "hover:text-blue-400" },
-                { text: "Machine Learning (XGBoost)", color: "hover:text-purple-400" },
-                { text: "Data Science", color: "hover:text-orange-400" }
+                { text: "Python & FastAPI", color: "hover:text-accent-400" },
+                { text: "React & Tailwind CSS", color: "hover:text-primary-400" },
+                { text: "Machine Learning (XGBoost)", color: "hover:text-secondary-400" },
+                { text: "Data Science", color: "hover:text-highlight-400" }
               ].map((item, index) => (
                 <li 
                   key={item.text}
@@ -142,7 +142,7 @@ const Footer = () => {
               {['⭐', '🚀', '💡'].map((emoji, index) => (
                 <div 
                   key={emoji}
-                  className={`w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-sm cursor-pointer transform transition-all duration-300 hover:scale-125 hover:bg-blue-600 ${
+                  className={`w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-sm cursor-pointer transform transition-all duration-300 hover:scale-125 hover:bg-primary-600 ${
                     isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
                   }`}
                   style={{ transitionDelay: `${900 + index * 150}ms` }}
@@ -159,15 +159,15 @@ const Footer = () => {
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
           {/* Animated wave line */}
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-300 to-transparent">
-            <div className={`h-full bg-gradient-to-r from-blue-400 to-indigo-400 transform transition-transform duration-[2000ms] ${
+          <div className="absolute top-0 left-0 w-full h-px bg-highlight-300/50">
+            <div className={`h-full bg-primary-400 transform transition-transform duration-[2000ms] ${
               isLoaded ? 'translate-x-0' : '-translate-x-full'
             }`}></div>
           </div>
           
           <p className="text-gray-400 text-sm hover:text-gray-300 transition-colors duration-300 cursor-pointer">
             &copy; 2025 KosPrice. Dibuat sebagai project portofolio 
-            <span className="text-yellow-300 hover:text-yellow-200 transition-colors duration-200"> Data Science & Full Stack Development</span>.
+            <span className="text-highlight-300 hover:text-highlight-200 transition-colors duration-200"> Data Science & Full Stack Development</span>.
           </p>
           
           {/* Typing animation */}
@@ -184,7 +184,7 @@ const Footer = () => {
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className={`absolute w-1 h-1 bg-yellow-300 rounded-full opacity-60 animate-bounce transition-all duration-1000 ${
+            className={`absolute w-1 h-1 bg-highlight-300 rounded-full opacity-60 animate-bounce transition-all duration-1000 ${
               isLoaded ? 'opacity-60' : 'opacity-0'
             }`}
             style={{

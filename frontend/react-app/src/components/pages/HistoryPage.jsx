@@ -9,7 +9,7 @@ import Loader from '../ui/Loader';
 import Alert from '../feedback/Alert';
 import EmptyState from '../feedback/EmptyState';
 
-const HistoryPage = () => {
+const HistoryPage = ({ isAppLoaded = false }) => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -49,10 +49,12 @@ const HistoryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 pt-20 pb-12">
+    <div className={`min-h-screen pt-20 pb-12 transition-all duration-600 ${
+      isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+    }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent mb-6 leading-tight pb-2">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600 bg-clip-text text-transparent mb-6 leading-tight pb-2">
             Riwayat Prediksi
           </h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -115,7 +117,7 @@ const HistoryPage = () => {
                 onClick={() => setHistory([])}
                 variant="outline"
                 size="small"
-                className="text-red-600 border-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                className="text-error-600 border-error-600 hover:bg-error-50 dark:hover:bg-error-900/20"
               >
                 Hapus Semua
               </Button>
@@ -129,7 +131,7 @@ const HistoryPage = () => {
                 >
                   <button
                     onClick={() => deleteHistoryItem(item.id)}
-                    className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600 flex items-center justify-center"
+                    className="absolute top-2 right-2 w-8 h-8 bg-error-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-error-600 flex items-center justify-center"
                     title="Hapus riwayat"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,10 +139,10 @@ const HistoryPage = () => {
                     </svg>
                   </button>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                    <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center shadow-lg">
                       <span className="text-white font-bold text-sm">{index + 1}</span>
                     </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded-full">
+                    <div className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-secondary-700 px-2 py-1 rounded-full">
                       {formatDate(item.timestamp || item.created_at)}
                     </div>
                   </div>
@@ -164,10 +166,10 @@ const HistoryPage = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="border-t border-gray-200 dark:border-slate-600 pt-4">
+                  <div className="border-t border-gray-200 dark:border-secondary-600 pt-4">
                     <div className="text-center">
                       <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">Estimasi Harga</div>
-                      <div className="text-xl font-bold text-green-600 dark:text-green-400">
+                      <div className="text-xl font-bold text-success-600 dark:text-success-400">
                         {formatCurrency(Number(item.prediksi_harga || item.predicted_price || 0))}
                       </div>
                       {item.confidence && (

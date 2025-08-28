@@ -42,32 +42,32 @@ const Toast = ({
 
   const types = {
     success: {
-      bg: 'from-green-500 to-emerald-500',
-      bgLight: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
-      border: 'border-green-200 dark:border-green-700',
+      bg: 'from-success-500 to-success-500',
+      bgLight: 'from-success-50 to-success-50 dark:from-success-900/20 dark:to-success-900/20',
+      border: 'border-success-200 dark:border-success-700',
       icon: 'M5 13l4 4L19 7',
-      textColor: 'text-green-800 dark:text-green-200'
+      textColor: 'text-success-800 dark:text-success-200'
     },
     error: {
-      bg: 'from-red-500 to-pink-500',
-      bgLight: 'from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20',
-      border: 'border-red-200 dark:border-red-700',
+      bg: 'from-error-500 to-highlight-500',
+      bgLight: 'from-error-50 to-highlight-50 dark:from-error-900/20 dark:to-highlight-900/20',
+      border: 'border-error-200 dark:border-error-700',
       icon: 'M6 18L18 6M6 6l12 12',
-      textColor: 'text-red-800 dark:text-red-200'
+      textColor: 'text-error-800 dark:text-error-200'
     },
     warning: {
-      bg: 'from-yellow-500 to-orange-500',
-      bgLight: 'from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20',
-      border: 'border-yellow-200 dark:border-yellow-700',
+      bg: 'from-warning-500 to-warning-500',
+      bgLight: 'from-warning-50 to-warning-50 dark:from-warning-900/20 dark:to-warning-900/20',
+      border: 'border-warning-200 dark:border-warning-700',
       icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z',
-      textColor: 'text-yellow-800 dark:text-yellow-200'
+      textColor: 'text-warning-800 dark:text-warning-200'
     },
     info: {
-      bg: 'from-blue-500 to-indigo-500',
-      bgLight: 'from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20',
-      border: 'border-blue-200 dark:border-blue-700',
+      bg: 'from-primary-500 to-accent-500',
+      bgLight: 'from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20',
+      border: 'border-primary-200 dark:border-primary-700',
       icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-      textColor: 'text-blue-800 dark:text-blue-200'
+      textColor: 'text-primary-800 dark:text-primary-200'
     }
   };
 

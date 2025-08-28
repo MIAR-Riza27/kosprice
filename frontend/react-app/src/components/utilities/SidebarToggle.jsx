@@ -38,14 +38,16 @@ const SidebarToggle = ({ onToggleSidebar, isSidebarOpen }) => {
           : '-translate-x-16 opacity-0 pointer-events-none'
         }
         ${isAnimating ? 'scale-95' : ''}
-        bg-gradient-to-r from-blue-600/90 to-indigo-600/90 hover:from-blue-700/90 hover:to-indigo-700/90
-        dark:from-slate-700/90 dark:to-slate-800/90 dark:hover:from-slate-600/90 dark:hover:to-slate-700/90
-        text-white border-white/20 dark:border-slate-600/30
+        bg-white/80 dark:bg-background-dark/80 
+        hover:bg-white/90 dark:hover:bg-background-dark/90
+        text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400
+        border-primary-200/60 dark:border-primary-500/70
+        hover:border-primary-300/80 dark:hover:border-primary-400/80
       `}
       title="Buka Menu"
     >
-      {/* Background gradient overlay - konsisten dengan Navbar buttons */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-purple-400/10 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
+      {/* Background gentle overlay - single color */}
+      <div className="absolute inset-0 bg-primary-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
       
       {/* Content - mengikuti style Navbar */}
       <div className="flex items-center space-x-2 relative z-10">
@@ -70,11 +72,11 @@ const SidebarToggle = ({ onToggleSidebar, isSidebarOpen }) => {
         <span>Menu</span>
       </div>
       
-      {/* Active indicator - sama seperti di Navbar */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 rounded-full transition-all duration-300 w-0 bg-yellow-300 group-hover:w-1/2"></div>
+      {/* Active indicator - disesuaikan dengan theme transparan */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 rounded-full transition-all duration-300 w-0 bg-primary-500 dark:bg-primary-400 group-hover:w-1/2"></div>
       
-      {/* Shine effect - sama seperti di Navbar */}
-      <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 group-hover:animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Subtle shine effect - single color */}
+      <div className="absolute inset-0 bg-white/3 transform -skew-x-12 group-hover:animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
     </button>
   );
 };

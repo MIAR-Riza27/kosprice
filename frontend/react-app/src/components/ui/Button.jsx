@@ -11,9 +11,12 @@ const Button = ({
   const baseClasses = 'font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100';
   
   const variants = {
-    primary: 'bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-400 hover:to-purple-400',
-    secondary: 'bg-white text-gray-700 border-2 border-gray-200 hover:border-blue-300',
-    danger: 'bg-gradient-to-r from-red-500 to-pink-500 text-white hover:from-red-400 hover:to-pink-400'
+    primary: 'bg-gradient-to-br from-primary-500 to-primary-600 text-white hover:from-primary-400 hover:to-primary-500',
+    secondary: 'bg-background-primary text-text-secondary border-2 border-secondary-200 hover:border-primary-300',
+    accent: 'bg-gradient-to-br from-accent-500 to-accent-600 text-white hover:from-accent-400 hover:to-accent-500',
+    success: 'bg-gradient-to-br from-success-500 to-success-600 text-white hover:from-success-400 hover:to-success-500',
+    warning: 'bg-gradient-to-br from-warning-500 to-warning-600 text-white hover:from-warning-400 hover:to-warning-500',
+    danger: 'bg-gradient-to-br from-error-500 to-error-600 text-white hover:from-error-400 hover:to-error-500'
   };
 
   const sizes = {

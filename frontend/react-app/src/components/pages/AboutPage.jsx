@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../ui/Card';
 
-const AboutPage = () => {
+const AboutPage = ({ isAppLoaded = false }) => {
   const features = [
     {
       icon: "M13 10V3L4 14h7v7l9-11h-7z",
@@ -26,21 +26,23 @@ const AboutPage = () => {
   ];
 
   const techStack = [
-    { name: "React.js", description: "Library JavaScript untuk user interface", color: "from-blue-500 to-cyan-500" },
-    { name: "TailwindCSS", description: "Framework CSS utility-first", color: "from-teal-500 to-green-500" },
-    { name: "FastAPI", description: "Framework Python untuk REST API", color: "from-green-500 to-emerald-500" },
-    { name: "XGBoost", description: "Machine Learning algorithm untuk prediksi", color: "from-purple-500 to-pink-500" }
+    { name: "React.js", description: "Library JavaScript untuk user interface", color: "from-primary-500 to-primary-600" },
+    { name: "TailwindCSS", description: "Framework CSS utility-first", color: "from-accent-500 to-accent-600" },
+    { name: "FastAPI", description: "Framework Python untuk REST API", color: "from-success-500 to-success-600" },
+    { name: "XGBoost", description: "Machine Learning algorithm untuk prediksi", color: "from-warning-500 to-warning-600" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 pt-20 pb-12">
+    <div className={`min-h-screen pt-20 pb-12 transition-all duration-600 ${
+      isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+    }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 👈 Fix: Proper header spacing and line-height */}
         <div className="text-center mb-16">
           <h1 className="
             text-3xl md:text-4xl lg:text-5xl font-bold 
-            bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 
-            dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 
+            bg-gradient-to-r from-primary-600 to-primary-800 
+            dark:from-primary-400 dark:to-primary-600 
             bg-clip-text text-transparent 
             mb-6 leading-tight pb-2
           ">
@@ -54,7 +56,7 @@ const AboutPage = () => {
         {/* Main Description */}
         <Card className="mb-12">
           <div className="text-center mb-8">
-            <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+            <div className="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
               <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
@@ -78,7 +80,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <Card key={index} className="text-center hover:scale-105 transition-transform duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div className="w-12 h-12 bg-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
                   </svg>
@@ -123,15 +125,15 @@ const AboutPage = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">~</div>
+              <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">~</div>
               <div className="text-gray-600 dark:text-gray-300">Model dalam pengembangan</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">0</div>
+              <div className="text-3xl font-bold text-accent-600 dark:text-accent-400 mb-2">0</div>
               <div className="text-gray-600 dark:text-gray-300">Prediksi Dibuat</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">0</div>
+              <div className="text-3xl font-bold text-secondary-600 dark:text-secondary-400 mb-2">0</div>
               <div className="text-gray-600 dark:text-gray-300">Pengguna Terdaftar</div>
             </div>
           </div>

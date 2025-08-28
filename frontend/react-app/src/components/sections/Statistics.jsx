@@ -60,7 +60,7 @@ const Statistics = ({ isAppLoaded }) => {
       title: "Total Prediksi",
       value: formatNumber(Math.floor(animatedCounts.predictions)),
       suffix: "+",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-primary-500 to-primary-600",
       delay: ANIMATION.FAST
     },
     {
@@ -68,7 +68,7 @@ const Statistics = ({ isAppLoaded }) => {
       title: "Pengguna Aktif",
       value: formatNumber(Math.floor(animatedCounts.users)),
       suffix: "+",
-      color: "from-purple-500 to-pink-500",
+      color: "from-accent-500 to-accent-600",
       delay: ANIMATION.NORMAL
     },
     {
@@ -76,7 +76,7 @@ const Statistics = ({ isAppLoaded }) => {
       title: "Akurasi Model",
       value: animatedCounts.accuracy.toFixed(1),
       suffix: "%",
-      color: "from-green-500 to-emerald-500",
+      color: "from-success-500 to-success-600",
       delay: ANIMATION.SLOW
     },
     {
@@ -84,7 +84,7 @@ const Statistics = ({ isAppLoaded }) => {
       title: "Lokasi Terdaftar",
       value: formatNumber(Math.floor(animatedCounts.locations)),
       suffix: "+",
-      color: "from-orange-500 to-red-500",
+      color: "from-warning-500 to-warning-600",
       delay: ANIMATION.EXTRA_SLOW
     }
   ];
@@ -96,7 +96,7 @@ const Statistics = ({ isAppLoaded }) => {
         <div className={`text-center mb-12 transition-all duration-600 delay-100 ${
           isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600 bg-clip-text text-transparent mb-4">
             Statistik Platform
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
@@ -110,8 +110,8 @@ const Statistics = ({ isAppLoaded }) => {
             <div
               key={index}
               className={`
-                group relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm 
-                rounded-2xl shadow-xl p-6 border border-gray-200/50 dark:border-slate-700/50
+                group relative bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm 
+                rounded-2xl shadow-xl p-6 border border-gray-200/50 dark:border-secondary-700/50
                 transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:-translate-y-2
                 overflow-hidden
                 ${isAppLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
