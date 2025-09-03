@@ -103,7 +103,10 @@ def scrape(playwright):
     all_rooms_data = []  # Pindah ke luar loop region
 
     for region in regions:
-        page.goto(f"https://mamikos.com/cari/{region}/all/bulanan/0-15000000")
+        region_keywords = region.split("-")[0]
+        url = f"https://mamikos.com/cari/{region}/all/bulanan/0-15000000?keyword={region_keywords}&suggestion_type=search&rent=2&sort=price,-&price=10000-20000000&singgahsini=0"
+        print(url)
+        page.goto(url)
 
         for more_rooms in range(1):  # 1 kali
             try:
