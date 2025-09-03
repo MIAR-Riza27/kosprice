@@ -1,4 +1,4 @@
-from playwright.sync_api import sync_playwright
+from patchright.sync_api import sync_playwright
 import time
 import json
 import os
@@ -103,41 +103,34 @@ def scrape(playwright):
     all_rooms_data = []  # Pindah ke luar loop region
 
     for region in regions:
-        region_keywords = region.split("-")[0]
-        page.goto(
-            f"https://mamikos.com/cari/{region}/all/bulanan/0-15000000/158"
-            f"?keyword={region_keywords}&suggestion_type=search&rent=2&sort=price,-&price=10000-20000000"
-        )
+        page.goto(f"https://mamikos.com/cari/{region}/all/bulanan/0-15000000")
 
         for more_rooms in range(1):  # 1 kali
             try:
-                # Wait for button with shorter timeout
-                page.wait_for_selector("button.nominatim-list__see-more", timeout=10000)
+                # Wait for link with shorter timeout - Updated selector for <a> tag
+                page.wait_for_selector("a.list__content-load-link", timeout=10000)
 
-                button = page.get_by_role(
-                    "button", name="Lihat lebih banyak lagi", exact=False
-                )
+                # Updated selector to match the actual HTML structure (a tag, not button)
+                link = page.locator("a.list__content-load-link")
 
-                # Check if button is actually clickable
-                if button.count() > 0 and button.is_visible():
-                    button.scroll_into_view_if_needed()
-                    button.click()
+                # Check if link is actually clickable
+                if link.count() > 0 and link.is_visible():
+                    link.scroll_into_view_if_needed()
+                    link.click()
                     time.sleep(random.uniform(1, 2))
                     print(f"    ✅ Clicked 'Lihat lebih banyak' #{more_rooms + 1}")
                 else:
-                    print(
-                        "    ℹ️ No more 'Lihat lebih banyak' button, stopping expansion"
-                    )
+                    print("    ℹ️ No more 'Lihat lebih banyak' link, stopping expansion")
                     break
 
             except Exception as e:
                 print(
-                    f"    ℹ️ No more pages to load or button not found: {str(e)[:50]}..."
+                    f"    ℹ️ No more pages to load or link not found: {str(e)[:50]}..."
                 )
-                break  # Exit loop if no more buttons
+                break  # Exit loop if no more links
         time.sleep(random.uniform(2, 4))  # Delay before scraping cards
 
-        cards = page.locator('[data-testid="nominatimRoomCard"]').all()
+        cards = page.locator('[data-testid="kostRoomCard"]').all()
         print(f"Found {len(cards)} cards in region {region}")
 
         for card in cards:
