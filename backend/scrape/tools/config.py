@@ -6,7 +6,7 @@ SCRAPER_CONFIG = {
     "url_template": "{base_url}/{region}/all/bulanan/0-15000000?keyword={keyword}&suggestion_type=search&rent=2&sort=price,-&price=10000-20000000&singgahsini=0",
     "page_timeout": 15000,
     "load_timeout": 10000,
-    "connection_check_interval": 20,
+    "connection_check_interval": 50,
     "max_load_more_clicks": 30,
     "completed_region_threshold": 100,
     "duplicate_exit_threshold": 20,
