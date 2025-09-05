@@ -256,7 +256,9 @@ Project ini terbuka untuk kontribusi! Areas yang bisa dikembangkan:
 ### **Lisensi & Credits**
 
 - **License**: MIT License
-- **Author**: [Your Name]
+- **Author**: Muhammad Ibnu Alvariza - @MIAR-Riza27 - https://github.com/MIAR-Riza27
+- **LinkedIn**: https://www.linkedin.com/in/muhammadibnualvariza/
+- **Portfolio**: Coming soon (3 projects milestone)
 - **Tech Stack**: React, FastAPI, Playwright, Scikit-learn
 - **Data Source**: Web scraping (for educational purposes)
 
