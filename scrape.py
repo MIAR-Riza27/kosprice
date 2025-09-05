@@ -3,13 +3,41 @@ import time
 import json
 import os
 import random
+import argparse
 from datetime import datetime
 
 from regions import regions
 
 
-def load_existing_data():
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Kos Price Scraper")
+    parser.add_argument(
+        "--force-update",
+        "--update",
+        action="store_true",
+        help="Re-scrape all regions ignoring existing data",
+    )
+    parser.add_argument(
+        "--region", type=str, help="Scrape specific region only (e.g., jakarta)"
+    )
+    parser.add_argument(
+        "--verbose", "-v", action="store_true", help="Enable verbose logging"
+    )
+    parser.add_argument(
+        "--headless",
+        action="store_true",
+        default=True,
+        help="Run browser in headless mode",
+    )
+    return parser.parse_args()
+
+
+def load_existing_data(force_update=False):
     """Load existing backup data to continue scraping"""
+    if force_update:
+        print("🔄 FORCE UPDATE MODE - Will re-scrape all regions")
+        return [], set()  # Return empty, re-scrape semua
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(script_dir, "../data/data-scrape")
     backup_dir = os.path.join(data_dir, "backup")  # NEW: backup subfolder
@@ -181,32 +209,56 @@ def is_duplicate(new_data, existing_data):
     return False
 
 
-def scrape(playwright):
-    # Load existing data
-    all_rooms_data, completed_regions = load_existing_data()
+def scrape(playwright, args):
+    # Load existing data with force_update parameter
+    all_rooms_data, completed_regions = load_existing_data(args.force_update)
 
     browser = playwright.chromium.launch_persistent_context(
         user_data_dir=r"C:\playwright",
         channel="chrome",
-        headless=True,
+        headless=args.headless,  # Use CLI argument
         no_viewport=True,
     )
 
     page = browser.new_page()
 
-    for region in regions:
-        # Skip completed regions
-        if region in completed_regions:
+    # Filter regions if specific region requested
+    regions_to_process = regions
+    if args.region:
+        # Find matching region
+        matching_regions = [r for r in regions if args.region.lower() in r.lower()]
+        if matching_regions:
+            regions_to_process = matching_regions
+            print(
+                f"🎯 Found {len(matching_regions)} matching regions for '{args.region}'"
+            )
+        else:
+            print(f"❌ No regions found matching '{args.region}'")
+            return []
+
+    for region in regions_to_process:
+        # Skip completed regions (unless force_update)
+        if not args.force_update and region in completed_regions:
             print(f"⏭️ Skipping completed region: {region}")
             continue
 
         print(f"🎯 Processing region: {region}")
 
+        if args.verbose:
+            print(
+                f"📝 Starting scrape for {region} with {len(all_rooms_data)} existing records"
+            )
+
+        # ...existing scraping logic stays the same...
         region_keywords = region.split("-")[0]
         url = f"https://mamikos.com/cari/{region}/all/bulanan/0-15000000?keyword={region_keywords}&suggestion_type=search&rent=2&sort=price,-&price=10000-20000000&singgahsini=0"
-        print(url)
+
+        if args.verbose:
+            print(f"📝 URL: {url}")
+
         page.goto(url)
 
+        # ...rest of existing code stays exactly the same...
         for more_rooms in range(30):  # 30 kali!
             try:
                 # Wait for link with shorter timeout - Updated selector for <a> tag
@@ -256,12 +308,14 @@ def scrape(playwright):
                     or "Forbidden" in new_page.title()
                     or "Error" in new_page.title()
                 ):
-                    print("❌ Access denied or error page detected, skipping...")
+                    if args.verbose:
+                        print("❌ Access denied or error page detected, skipping...")
                     new_page.close()
                     continue
 
             except Exception as e:
-                print(f"❌ Page load timeout or error: {e}")
+                if args.verbose:
+                    print(f"❌ Page load timeout or error: {e}")
                 new_page.close()
                 continue
 
@@ -353,7 +407,8 @@ def scrape(playwright):
                 print(f"✅ Extracted: {room_data['nama_kos']} - {room_data['harga']}")
                 consecutive_duplicates = 0  # Reset counter
             else:
-                print(f"⚠️ Skipped duplicate: {room_data['nama_kos']}")
+                if args.verbose:
+                    print(f"⚠️ Skipped duplicate: {room_data['nama_kos']}")
                 consecutive_duplicates += 1
 
                 # Early exit if too many consecutive duplicates
@@ -389,7 +444,10 @@ def scrape(playwright):
             new_page.close()
 
         # Add memory cleanup every 5 regions
-        if regions.index(region) % 5 == 0 and regions.index(region) > 0:
+        if (
+            regions_to_process.index(region) % 5 == 0
+            and regions_to_process.index(region) > 0
+        ):
             print("🔄 Memory cleanup...")
             page.close()
             page = browser.new_page()
@@ -404,8 +462,19 @@ def scrape(playwright):
 
 
 if __name__ == "__main__":
+    args = parse_arguments()
+
+    if args.force_update:
+        print("🚀 FORCE UPDATE MODE - Re-scraping all regions")
+
+    if args.region:
+        print(f"🎯 SINGLE REGION MODE - Scraping {args.region} only")
+
+    if args.verbose:
+        print("📝 VERBOSE MODE - Detailed logging enabled")
+
     with sync_playwright() as playwright:
-        all_rooms_data = scrape(playwright)
+        all_rooms_data = scrape(playwright, args)
 
     # Create directory structure
     script_dir = os.path.dirname(os.path.abspath(__file__))
