@@ -5,6 +5,7 @@ import os
 import random
 import argparse
 from datetime import datetime
+import requests
 
 from regions import regions
 
@@ -209,6 +210,15 @@ def is_duplicate(new_data, existing_data):
     return False
 
 
+def check_internet_connection():
+    """Quick internet connection check"""
+    try:
+        response = requests.get("https://httpbin.org/get", timeout=5)
+        return response.status_code == 200
+    except Exception:
+        return False
+
+
 def scrape(playwright, args):
     # Load existing data with force_update parameter
     all_rooms_data, completed_regions = load_existing_data(args.force_update)
@@ -290,19 +300,38 @@ def scrape(playwright, args):
         consecutive_duplicates = 0  # Add duplicate counter
 
         for i, card in enumerate(cards):
+            # Check connection every 20 cards
+            if i % 20 == 0 and i > 0:
+                if not check_internet_connection():
+                    print(
+                        f"❌ Connection lost at card {i}. Saving progress and moving to next region..."
+                    )
+                    break
+
             # Random delay untuk mimic human behavior
             time.sleep(random.uniform(1, 3))
 
-            with page.context.expect_page() as new_page_info:
-                card.click()
-
-            new_page = new_page_info.value
-
-            # Check if page is valid (not 403 or error)
+            # Add robust timeout and error handling
             try:
-                new_page.wait_for_load_state("networkidle", timeout=10000)
+                with page.context.expect_page(
+                    timeout=15000
+                ) as new_page_info:  # Reduced timeout
+                    card.click()
+                new_page = new_page_info.value
+            except Exception as e:
+                if args.verbose:
+                    print(
+                        f"⚠️ Failed to open card {i + 1}: {str(e)[:50]}... Skipping..."
+                    )
+                continue  # Skip this card and continue
 
-                # Check for 403 or error pages
+            # Check if page loaded successfully
+            try:
+                new_page.wait_for_load_state(
+                    "networkidle", timeout=10000
+                )  # Reduced timeout
+
+                # Check for error pages
                 if (
                     "403" in new_page.title()
                     or "Forbidden" in new_page.title()
@@ -315,7 +344,7 @@ def scrape(playwright, args):
 
             except Exception as e:
                 if args.verbose:
-                    print(f"❌ Page load timeout or error: {e}")
+                    print(f"❌ Page load timeout: {str(e)[:50]}... Skipping...")
                 new_page.close()
                 continue
 
