@@ -8,6 +8,49 @@ from datetime import datetime
 from regions import regions
 
 
+def load_existing_data():
+    """Load existing backup data to continue scraping"""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(script_dir, "../data/data-scrape")
+
+    # Cari backup file terbaru
+    try:
+        backup_files = [
+            f for f in os.listdir(data_dir) if f.startswith("data-scrape_backup_")
+        ]
+        if backup_files:
+            latest_backup = max(
+                backup_files,
+                key=lambda x: int(x.split("_")[-1].split(".")[0]),
+            )
+            backup_path = os.path.join(data_dir, latest_backup)
+
+            with open(backup_path, "r", encoding="utf-8") as f:
+                existing_data = json.load(f)
+
+            # Hitung region yang sudah selesai (minimal 50+ records per region)
+            region_counts = {}
+            for item in existing_data:
+                if "region" in item and item["region"]:
+                    region_counts[item["region"]] = (
+                        region_counts.get(item["region"], 0) + 1
+                    )
+
+            # Region dianggap selesai jika ada 100+ records
+            completed_regions = {
+                region for region, count in region_counts.items() if count >= 100
+            }
+
+            print(f"📂 Loaded {len(existing_data)} existing records")
+            print(f"📊 Region counts: {region_counts}")
+            print(f"✅ Completed regions (100+ records): {list(completed_regions)}")
+            return existing_data, completed_regions
+    except Exception as e:
+        print(f"❌ Error loading backup: {e}")
+
+    return [], set()
+
+
 def smart_kategorisasi(fasilitas_list):
     from difflib import SequenceMatcher
 
@@ -92,23 +135,32 @@ def smart_kategorisasi(fasilitas_list):
 
 
 def scrape(playwright):
+    # Load existing data
+    all_rooms_data, completed_regions = load_existing_data()
+
     browser = playwright.chromium.launch_persistent_context(
         user_data_dir=r"C:\playwright",
         channel="chrome",
-        headless=False,
+        headless=True,
         no_viewport=True,
     )
 
     page = browser.new_page()
-    all_rooms_data = []  # Pindah ke luar loop region
 
     for region in regions:
+        # Skip completed regions
+        if region in completed_regions:
+            print(f"⏭️ Skipping completed region: {region}")
+            continue
+
+        print(f"🎯 Processing region: {region}")
+
         region_keywords = region.split("-")[0]
         url = f"https://mamikos.com/cari/{region}/all/bulanan/0-15000000?keyword={region_keywords}&suggestion_type=search&rent=2&sort=price,-&price=10000-20000000&singgahsini=0"
         print(url)
         page.goto(url)
 
-        for more_rooms in range(1):  # 1 kali
+        for more_rooms in range(30):  # 30 kali!
             try:
                 # Wait for link with shorter timeout - Updated selector for <a> tag
                 page.wait_for_selector("a.list__content-load-link", timeout=10000)
@@ -249,9 +301,30 @@ def scrape(playwright):
             print(f"✅ Extracted: {room_data['nama_kos']} - {room_data['harga']}")
             all_rooms_data.append(room_data)
 
+            # Add: Save data every 50 records for safety
+            if len(all_rooms_data) % 50 == 0:
+                # Define backup path properly
+                script_dir = os.path.dirname(os.path.abspath(__file__))
+                data_dir = os.path.join(script_dir, "../data/data-scrape")
+                os.makedirs(data_dir, exist_ok=True)
+                temp_filename = os.path.join(
+                    data_dir, f"data-scrape_backup_{len(all_rooms_data)}.json"
+                )
+
+                with open(temp_filename, "w", encoding="utf-8") as f:
+                    json.dump(all_rooms_data, f, ensure_ascii=False, indent=2)
+                print(f"🔄 Backup saved: {len(all_rooms_data)} records")
+
             # Random delay before closing and moving to next
             time.sleep(random.uniform(2, 4))
             new_page.close()
+
+        # Add memory cleanup every 5 regions
+        if regions.index(region) % 5 == 0 and regions.index(region) > 0:
+            print("🔄 Memory cleanup...")
+            page.close()
+            page = browser.new_page()
+            time.sleep(random.uniform(10, 20))  # Longer break
 
         # Delay between regions to be more polite
         print(f"📝 Completed region {region}. Taking a break...")
