@@ -134,6 +134,25 @@ def smart_kategorisasi(fasilitas_list):
     return result
 
 
+def is_duplicate(new_data, existing_data):
+    """Check if data already exists"""
+    new_key = (
+        new_data.get("nama_kos", ""),
+        new_data.get("harga", ""),
+        new_data.get("alamat", ""),
+    )
+
+    for existing in existing_data:
+        existing_key = (
+            existing.get("nama_kos", ""),
+            existing.get("harga", ""),
+            existing.get("alamat", ""),
+        )
+        if new_key == existing_key:
+            return True
+    return False
+
+
 def scrape(playwright):
     # Load existing data
     all_rooms_data, completed_regions = load_existing_data()
@@ -188,7 +207,9 @@ def scrape(playwright):
         cards = page.locator('[data-testid="kostRoomCard"]').all()
         print(f"Found {len(cards)} cards in region {region}")
 
-        for card in cards:
+        consecutive_duplicates = 0  # Add duplicate counter
+
+        for i, card in enumerate(cards):
             # Random delay untuk mimic human behavior
             time.sleep(random.uniform(1, 3))
 
@@ -298,8 +319,24 @@ def scrape(playwright):
             room_data["url"] = new_page.url
             room_data["scraped_at"] = datetime.now().isoformat()
 
-            print(f"✅ Extracted: {room_data['nama_kos']} - {room_data['harga']}")
-            all_rooms_data.append(room_data)
+            # Check for duplicates before adding
+            if not is_duplicate(room_data, all_rooms_data):
+                all_rooms_data.append(room_data)
+                print(f"✅ Extracted: {room_data['nama_kos']} - {room_data['harga']}")
+                consecutive_duplicates = 0  # Reset counter
+            else:
+                print(f"⚠️ Skipped duplicate: {room_data['nama_kos']}")
+                consecutive_duplicates += 1
+
+                # Early exit if too many consecutive duplicates
+                if consecutive_duplicates >= 20:
+                    print(
+                        f"🛑 Region data exhausted ({consecutive_duplicates} consecutive duplicates)"
+                    )
+                    print(
+                        f"📊 Total extracted from {region}: {len([r for r in all_rooms_data if r.get('region') == region])} records"
+                    )
+                    break  # Exit card loop, move to next region
 
             # Add: Save data every 50 records for safety
             if len(all_rooms_data) % 50 == 0:
