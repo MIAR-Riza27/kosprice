@@ -1,7 +1,6 @@
 """Network utilities for connection checking and handling"""
 
 import requests
-from typing import bool
 
 
 def check_internet_connection(timeout: int = 5) -> bool:
