@@ -12,18 +12,22 @@ def load_existing_data():
     """Load existing backup data to continue scraping"""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(script_dir, "../data/data-scrape")
+    backup_dir = os.path.join(data_dir, "backup")  # NEW: backup subfolder
 
-    # Cari backup file terbaru
+    # Create directories if they don't exist
+    os.makedirs(backup_dir, exist_ok=True)
+
+    # Cari backup file terbaru di folder backup
     try:
         backup_files = [
-            f for f in os.listdir(data_dir) if f.startswith("data-scrape_backup_")
+            f for f in os.listdir(backup_dir) if f.startswith("data-scrape_backup_")
         ]
         if backup_files:
             latest_backup = max(
                 backup_files,
                 key=lambda x: int(x.split("_")[-1].split(".")[0]),
             )
-            backup_path = os.path.join(data_dir, latest_backup)
+            backup_path = os.path.join(backup_dir, latest_backup)  # Updated path
 
             with open(backup_path, "r", encoding="utf-8") as f:
                 existing_data = json.load(f)
@@ -41,7 +45,9 @@ def load_existing_data():
                 region for region, count in region_counts.items() if count >= 100
             }
 
-            print(f"📂 Loaded {len(existing_data)} existing records")
+            print(
+                f"📂 Loaded {len(existing_data)} existing records from backup/{latest_backup}"
+            )
             print(f"📊 Region counts: {region_counts}")
             print(f"✅ Completed regions (100+ records): {list(completed_regions)}")
             return existing_data, completed_regions
@@ -49,6 +55,28 @@ def load_existing_data():
         print(f"❌ Error loading backup: {e}")
 
     return [], set()
+
+
+def save_by_regions(all_data, data_dir):
+    """Split and save data by regions"""
+    regions_dir = os.path.join(data_dir, "regions")
+    os.makedirs(regions_dir, exist_ok=True)
+
+    by_region = {}
+    for item in all_data:
+        region = item.get("region", "unknown")
+        region_name = region.split("-")[0]  # jakarta, bandung, etc.
+
+        if region_name not in by_region:
+            by_region[region_name] = []
+        by_region[region_name].append(item)
+
+    for region_name, data in by_region.items():
+        filename = f"data-scrape-{region_name}.json"
+        filepath = os.path.join(regions_dir, filename)
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"📁 Saved {len(data)} records to regions/{filename}")
 
 
 def smart_kategorisasi(fasilitas_list):
@@ -338,19 +366,23 @@ def scrape(playwright):
                     )
                     break  # Exit card loop, move to next region
 
-            # Add: Save data every 50 records for safety
+            # UPDATED: Save backup to backup subfolder
             if len(all_rooms_data) % 50 == 0:
-                # Define backup path properly
                 script_dir = os.path.dirname(os.path.abspath(__file__))
                 data_dir = os.path.join(script_dir, "../data/data-scrape")
-                os.makedirs(data_dir, exist_ok=True)
+                backup_dir = os.path.join(data_dir, "backup")  # NEW: backup subfolder
+                os.makedirs(backup_dir, exist_ok=True)
+
                 temp_filename = os.path.join(
-                    data_dir, f"data-scrape_backup_{len(all_rooms_data)}.json"
+                    backup_dir,
+                    f"data-scrape_backup_{len(all_rooms_data)}.json",  # Save to backup folder
                 )
 
                 with open(temp_filename, "w", encoding="utf-8") as f:
                     json.dump(all_rooms_data, f, ensure_ascii=False, indent=2)
-                print(f"🔄 Backup saved: {len(all_rooms_data)} records")
+                print(
+                    f"🔄 Backup saved: backup/data-scrape_backup_{len(all_rooms_data)}.json"
+                )
 
             # Random delay before closing and moving to next
             time.sleep(random.uniform(2, 4))
@@ -375,15 +407,25 @@ if __name__ == "__main__":
     with sync_playwright() as playwright:
         all_rooms_data = scrape(playwright)
 
-    # Fix: Path ke backend/data/data-scrape
+    # Create directory structure
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(script_dir, "../data/data-scrape")
+    backup_dir = os.path.join(data_dir, "backup")
     os.makedirs(data_dir, exist_ok=True)
+    os.makedirs(backup_dir, exist_ok=True)
 
+    # Save master file
     filename = os.path.join(data_dir, "data-scrape.json")
-
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(all_rooms_data, f, ensure_ascii=False, indent=2)
+    print("💾 Master file saved: data-scrape.json")
 
-    print(f"💾 Data saved to: {filename}")
+    # Save by regions
+    save_by_regions(all_rooms_data, data_dir)
+
     print(f"📊 Total rooms scraped: {len(all_rooms_data)}")
+    print("📁 File structure created:")
+    print("   /data-scrape/")
+    print("   ├── /backup/")
+    print("   ├── /regions/")
+    print("   └── data-scrape.json")
