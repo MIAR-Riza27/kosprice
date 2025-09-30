@@ -20,6 +20,13 @@
 - **Portofolio Showcase**: Membuktikan kemampuan Full Stack Development + Data Science dalam satu project.
 
 ---
+### **Perhatian! REALLY BIG UPDATE Datang!!**
+
+> Kami menyadari bentuk struktur project sekarang aneh dan **tidak standar**, **mohon maaf atas** ketidak nyamanannya.
+> Tapi update selanjutnya akan **merombak habis** struktur project ini.
+> **Nantikan, STAY TUNE!**
+
+---
 
 ### **Arsitektur Sistem v3.0**
 
