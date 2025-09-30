@@ -25,6 +25,10 @@
 > Kami menyadari bentuk struktur project sekarang aneh dan **tidak standar**, **mohon maaf atas** ketidak nyamanannya.
 > Tapi update selanjutnya akan **merombak habis** struktur project ini.
 > **Nantikan, STAY TUNE!**
+>
+> **UPDATE tambahan!** kami sedang beralih memakai framework **NEXT.js**
+>
+> **Nantikan, STAY TUNE!**
 
 ---
 
