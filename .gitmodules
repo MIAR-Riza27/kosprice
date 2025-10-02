@@ -1,3 +1,0 @@
-[submodule "backend/scraper"]
-	path = backend/scraper
-	url = https://github.com/MIAR-Riza27/kos-price-scraper.git
