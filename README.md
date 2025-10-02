@@ -95,10 +95,22 @@ kosprice/
 
 ### **Cara Menjalankan Proyek**
 
-1. Clone repo: `git clone https://github.com/MIAR-Riza27/kosprice.git`
-2. Install dependencies: `npm install`
-3. Jalankan development server: `npm run dev`
-4. Buka di browser: `http://localhost:3000`
+1. Clone repo: 
+```
+git clone https://github.com/MIAR-Riza27/kosprice.git
+```
+2. Install dependencies: 
+```
+npm install
+```
+3. Jalankan development server:
+```
+npm run dev
+```
+1. Buka di browser: 
+```
+http://localhost:3000
+```
 
 ---
 
