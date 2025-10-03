@@ -3,7 +3,7 @@ import Card from "@/components/Card";
 export default function HistoryPage() {
 	return (
 		<main className="w-full bg-gray-100 px-6 py-25 md:py-35">
-			<div className="max-w-7xl mx-auto flex flex-col gap-y-12">
+			<div className="max-w-6xl mx-auto flex flex-col gap-y-12">
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-8 grid-flow-row-dense">
 					{/* function */}
 					<Card className="flex flex-col items-center">

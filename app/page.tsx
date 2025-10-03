@@ -2,8 +2,8 @@ import Card from "../components/Card";
 
 export default function Home() {
   return (
-    <main className="w-full bg-gray-100 px-6 py-25 md:py-35">
-      <div className="max-w-7xl mx-auto flex flex-col gap-y-12">
+    <main className="w-full bg-gray-100 px-6 py-25 md:py-27">
+      <div className="max-w-6xl mx-auto flex flex-col gap-y-12">
         <Card className="flex flex-col items-center">
           <p>
             Predict kos price
