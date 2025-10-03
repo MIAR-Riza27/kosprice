@@ -37,20 +37,3 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
-
-# Python scraper (submodule)
-/scraper/__pycache__/
-/scraper/**/*.pyc
-/scraper/**/*.pyo
-/scraper/**/*.pyd
-/scraper/.Python
-/scraper/env/
-/scraper/venv/
-/scraper/.env
-/scraper/.env.*
-/scraper/.mypy_cache/
-/scraper/.pytest_cache/
-/scraper/.coverage
-/scraper/.cache
-/scraper/.DS_Store
-/scraper/.vscode
