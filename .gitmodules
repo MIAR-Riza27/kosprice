@@ -1,0 +1,3 @@
+[submodule "scraper"]
+	path = scraper
+	url = https://github.com/MIAR-Riza27/kosprice-scraper.git
