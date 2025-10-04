@@ -6,42 +6,36 @@ import Typography from "./Typography";
 
 const features = [
 	{
-		icon: "🧠",
 		title: "Smart Analysis",
 		description:
 			"Algoritma machine learning yang menganalisis pola fasilitas dan tren pasar untuk prediksi yang presisi.",
 		gradient: "from-[var(--color-primary)] to-[var(--color-primary-300)]",
 	},
 	{
-		icon: "📍",
 		title: "Location Intelligence",
 		description:
 			"Integrasi data geografis untuk pricing yang akurat berdasarkan kedekatan dengan kampus dan fasilitas.",
 		gradient: "from-[var(--color-secondary)] to-[var(--color-secondary-300)]",
 	},
 	{
-		icon: "⚡",
 		title: "Real-time Results",
 		description:
 			"Dapatkan prediksi harga instan dalam hitungan detik dengan sistem pemrosesan AI yang dioptimalkan.",
 		gradient: "from-[var(--color-primary)] to-[var(--color-secondary)]",
 	},
 	{
-		icon: "📊",
 		title: "Market Insights",
 		description:
 			"Analisis mendalam tentang tren pasar kos dan faktor-faktor yang mempengaruhi harga di setiap lokasi.",
 		gradient: "from-[var(--color-secondary)] to-[var(--color-primary-300)]",
 	},
 	{
-		icon: "🔒",
 		title: "Data Security",
 		description:
 			"Keamanan data terjamin dengan enkripsi tingkat tinggi dan sistem backup otomatis yang reliable.",
 		gradient: "from-[var(--color-primary-200)] to-[var(--color-secondary)]",
 	},
 	{
-		icon: "📱",
 		title: "Mobile Friendly",
 		description:
 			"Interface responsif yang sempurna di semua perangkat, dari desktop hingga smartphone.",
@@ -92,15 +86,6 @@ export default function FeatureScroller() {
 							variant="default"
 							className="p-6 sm:p-8 backdrop-blur-sm w-full h-full group transition-all duration-500 ease-out hover:scale-105 hover:shadow-2xl hover:shadow-[var(--color-primary)]/20 hover:-translate-y-2"
 						>
-							{/* Icon container with enhanced hover effect */}
-							<div
-								className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br ${feature.gradient} rounded-xl mb-4 sm:mb-6 flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}
-							>
-								<span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform duration-300">
-									{feature.icon}
-								</span>
-							</div>
-
 							{/* Title with enhanced typography */}
 							<Typography
 								variant="h5"

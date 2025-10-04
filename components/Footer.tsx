@@ -71,29 +71,29 @@ export default function Footer() {
                     <div>
                         <div className="flex items-center gap-2 mb-4">
                             <Typography variant="h5" texture="default" weight="semibold">
-                                Platform
+                                Pages
                             </Typography>
                             <div className="w-1 h-4 bg-[var(--color-secondary)] rounded-full"></div>
                         </div>
                         <div className="space-y-3">
                             <Link href="/" className="block hover:scale-105 transition-all duration-300 group">
                                 <Typography variant="span" texture="muted" size="sm" className="group-hover:text-[var(--color-secondary)]">
-                                    🏠 Beranda
+                                    Homepage
                                 </Typography>
                             </Link>
                             <Link href="/predict" className="block hover:scale-105 transition-all duration-300 group">
                                 <Typography variant="span" texture="muted" size="sm" className="group-hover:text-[var(--color-secondary)]">
-                                    🎯 Prediksi Harga
+                                    Predict
                                 </Typography>
                             </Link>
                             <Link href="/history" className="block hover:scale-105 transition-all duration-300 group">
                                 <Typography variant="span" texture="muted" size="sm" className="group-hover:text-[var(--color-secondary)]">
-                                    📊 Riwayat Prediksi
+                                    History
                                 </Typography>
                             </Link>
                             <Link href="/about" className="block hover:scale-105 transition-all duration-300 group">
                                 <Typography variant="span" texture="muted" size="sm" className="group-hover:text-[var(--color-secondary)]">
-                                    ℹ️ Tentang Kami
+                                    About
                                 </Typography>
                             </Link>
                         </div>
@@ -109,19 +109,15 @@ export default function Footer() {
                         </div>
                         <div className="space-y-3">
                             <div className="flex items-center gap-2 hover:scale-105 transition-all duration-300">
-                                <span className="text-[var(--color-primary)]">🧠</span>
                                 <Typography variant="span" texture="muted" size="sm">Smart Analysis</Typography>
                             </div>
                             <div className="flex items-center gap-2 hover:scale-105 transition-all duration-300">
-                                <span className="text-[var(--color-primary)]">📍</span>
                                 <Typography variant="span" texture="muted" size="sm">Location Intelligence</Typography>
                             </div>
                             <div className="flex items-center gap-2 hover:scale-105 transition-all duration-300">
-                                <span className="text-[var(--color-primary)]">⚡</span>
                                 <Typography variant="span" texture="muted" size="sm">Instant Results</Typography>
                             </div>
                             <div className="flex items-center gap-2 hover:scale-105 transition-all duration-300">
-                                <span className="text-[var(--color-primary)]">📈</span>
                                 <Typography variant="span" texture="muted" size="sm">Market Insights</Typography>
                             </div>
                         </div>
@@ -206,7 +202,7 @@ export default function Footer() {
                 <div className="mt-8 text-center">
                     <Card variant="secondary" className="inline-flex items-center px-6 py-3 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
                         <Typography variant="small" texture="white" size="sm" weight="medium">
-                            🚀 Mulai prediksi harga kos Anda sekarang - Gratis & Akurat!
+                            Mulai prediksi harga kos Anda sekarang!!
                         </Typography>
                     </Card>
                 </div>

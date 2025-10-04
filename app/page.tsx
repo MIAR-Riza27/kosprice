@@ -305,7 +305,7 @@ export default function Home() {
               <div className="border-t border-[var(--color-primary-600)]/20 pt-4 mt-auto">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-300)] rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">👨‍🎓</span>
+                    <span className="text-lg"></span>
                   </div>
                   <div className="flex-1">
                     <Typography variant="h6" texture="default" weight="semibold" className="mb-1">
@@ -330,7 +330,7 @@ export default function Home() {
               <div className="border-t border-[var(--color-primary-600)]/20 pt-4 mt-auto">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-secondary-300)] rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">👩‍💼</span>
+                    <span className="text-lg"></span>
                   </div>
                   <div className="flex-1">
                     <Typography variant="h6" texture="default" weight="semibold" className="mb-1">
@@ -355,7 +355,7 @@ export default function Home() {
               <div className="border-t border-[var(--color-primary-600)]/20 pt-4 mt-auto">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">🏢</span>
+                    <span className="text-lg"></span>
                   </div>
                   <div className="flex-1">
                     <Typography variant="h6" texture="default" weight="semibold" className="mb-1">
