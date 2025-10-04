@@ -1,88 +1,180 @@
 @import "tailwindcss";
 
+/* KosPrice Minimal Theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary: blue */
+  --color-primary: #3b82f6;
+  --color-primary-100: #1e3a8a;
+  --color-primary-200: #2563eb;
+  --color-primary-300: #60a5fa;
+  --color-primary-400: #93c5fd;
+  --color-primary-500: #bfdbfe;
+  --color-primary-600: #dbeafe;
+  --color-primary-700: #e0e7ff;
+  --color-primary-800: #f1f5f9;
+  --color-primary-900: #f3f4f6;
+
+  /* Secondary: orange */
+  --color-secondary: #f59e42;
+  --color-secondary-100: #b45309;
+  --color-secondary-200: #ea580c;
+  --color-secondary-300: #fb923c;
+  --color-secondary-400: #fdba74;
+  --color-secondary-500: #fed7aa;
+  --color-secondary-600: #ffedd5;
+  --color-secondary-700: #fff7ed;
+  --color-secondary-800: #fef3c7;
+  --color-secondary-900: #fff7ed;
+
+  /* Backgrounds - Menggunakan Primary & Secondary palette */
+  --background-light: var(--color-primary-900);
+  --background-light-alt: var(--color-primary-800);
+
+  /* Backgrounds - Dark menggunakan Primary palette */
+  --background-dark: var(--color-primary-100);
+  --background-dark-alt: #0f1419; /* Versi lebih gelap dari primary-100 */
+
+  /* Foreground - Menggunakan Primary palette */
+  --foreground: var(--color-primary-100);
+  --background: var(--color-primary-900);
+  --background-alt: var(--color-primary-800);
 }
 
-/* KosPrice Color Palette */
-:root {
-  /* Primary: caribbean_current */
-  --color-primary: #006d77;
-  --color-primary-100: #001617;
-  --color-primary-200: #002b2f;
-  --color-primary-300: #004146;
-  --color-primary-400: #00565e;
-  --color-primary-500: #006d77;
-  --color-primary-600: #00b4c4;
-  --color-primary-700: #13ebff;
-  --color-primary-800: #62f2ff;
-  --color-primary-900: #b0f8ff;
-
-  /* Secondary: tiffany_blue */
-  --color-secondary: #83c5be;
-  --color-secondary-100: #152c2a;
-  --color-secondary-200: #2a5954;
-  --color-secondary-300: #3f857e;
-  --color-secondary-400: #56afa6;
-  --color-secondary-500: #83c5be;
-  --color-secondary-600: #9bd0cb;
-  --color-secondary-700: #b4dcd8;
-  --color-secondary-800: #cde7e5;
-  --color-secondary-900: #e6f3f2;
-
-  /* Tertiary: atomic_tangerine */
-  --color-tertiary: #e29578;
-  --color-tertiary-100: #39180c;
-  --color-tertiary-200: #723018;
-  --color-tertiary-300: #ac4824;
-  --color-tertiary-400: #d6673f;
-  --color-tertiary-500: #e29578;
-  --color-tertiary-600: #e8aa93;
-  --color-tertiary-700: #eebfae;
-  --color-tertiary-800: #f4d4c9;
-  --color-tertiary-900: #f9eae4;
-
-  /* Accent: pale_dogwood */
-  --color-accent: #ffddd2;
-  --color-accent-100: #5d1700;
-  --color-accent-200: #ba2e00;
-  --color-accent-300: #ff5117;
-  --color-accent-400: #ff9774;
-  --color-accent-500: #ffddd2;
-  --color-accent-600: #ffe3da;
-  --color-accent-700: #ffeae3;
-  --color-accent-800: #fff1ed;
-  --color-accent-900: #fff8f6;
-
-  /* Surface: alice_blue */
-  --color-surface: #edf6f9;
-  --color-surface-100: #183d49;
-  --color-surface-200: #307991;
-  --color-surface-300: #5badc8;
-  --color-surface-400: #a3d1e0;
-  --color-surface-500: #edf6f9;
-  --color-surface-600: #f0f7fa;
-  --color-surface-700: #f4f9fb;
-  --color-surface-800: #f7fbfc;
-  --color-surface-900: #fbfdfe;
-
-  /* Neutral: white & black (se-nada) */
-  --color-white: #fbfdfe; /* alice_blue-900 */
-  --color-black: #001617; /* caribbean_current-100 */
+/* Professional Textures - Menggunakan hanya palette warna */
+.texture-subtle {
+  background-image: 
+    radial-gradient(circle at 25% 25%, color-mix(in srgb, var(--color-primary) 8%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, color-mix(in srgb, var(--color-primary-300) 6%, transparent) 0%, transparent 50%);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.texture-noise {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2360a5fa' fill-opacity='0.12'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='53' cy='53' r='1'/%3E%3Ccircle cx='23' cy='31' r='1'/%3E%3Ccircle cx='41' cy='17' r='1'/%3E%3Ccircle cx='35' cy='45' r='1'/%3E%3Ccircle cx='15' cy='25' r='1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.texture-gradient-noise {
+  background: 
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2393c5fd' fill-opacity='0.08'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.texture-dots {
+  background-image: 
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--color-primary-200) 12%, transparent) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.texture-glass {
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--background-light) 85%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary-400) 30%, transparent);
+}
+
+.texture-dark-glass {
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--background-dark) 90%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary-300) 30%, transparent);
+}
+
+.text-texture {
+  background: linear-gradient(135deg, var(--background-dark) 0%, var(--color-primary-100) 50%, var(--background-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-texture-light {
+  background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-300) 50%, var(--color-primary-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Additional text textures */
+.text-texture-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-300) 50%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-texture-secondary {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-300) 50%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-texture-hero {
+  background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Texture untuk elemen interaktif */
+.texture-button {
+  background-image: 
+    linear-gradient(45deg, transparent 25%, color-mix(in srgb, var(--background-light) 10%, transparent) 25%, color-mix(in srgb, var(--background-light) 10%, transparent) 50%, transparent 50%, transparent 75%, color-mix(in srgb, var(--background-light) 10%, transparent) 75%);
+  background-size: 20px 20px;
+}
+
+.texture-card-primary {
+  background-image: 
+    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--color-primary) 12%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--color-primary-300) 8%, transparent) 0%, transparent 40%);
+}
+
+.texture-card-secondary {
+  background-image: 
+    linear-gradient(45deg, color-mix(in srgb, var(--color-secondary) 10%, transparent) 25%, transparent 25%, transparent 75%, color-mix(in srgb, var(--color-secondary) 10%, transparent) 75%),
+    linear-gradient(-45deg, color-mix(in srgb, var(--color-secondary-300) 8%, transparent) 25%, transparent 25%, transparent 75%, color-mix(in srgb, var(--color-secondary-300) 8%, transparent) 75%);
+  background-size: 30px 30px;
+}
+
+/* Texture untuk gradient card */
+.texture-gradient-card {
+  position: relative;
+}
+
+.texture-gradient-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--color-primary-900) 15%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--color-secondary-600) 8%, transparent) 0%, transparent 40%);
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-primary-100);
+    --background-alt: #0f1419; /* Versi lebih gelap dari primary-100 */
+    --foreground: var(--color-primary-700);
+  }
+  
+  /* Dark mode texture adjustments */
+  .texture-glass {
+    background: color-mix(in srgb, var(--background-dark) 85%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary-300) 30%, transparent);
+  }
+  
+  .texture-subtle {
+    background-image: 
+      radial-gradient(circle at 25% 25%, color-mix(in srgb, var(--color-primary-300) 10%, transparent) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, color-mix(in srgb, var(--color-primary-400) 8%, transparent) 0%, transparent 50%);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--color-primary-900);
+    --background-alt: var(--color-primary-800);
+    --foreground: var(--color-primary-100);
   }
 }
 
@@ -90,4 +182,50 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Scrolling Animation - Enhanced */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.animate-scroll-fast {
+  animation: scroll 14s linear infinite;
+}
+
+.animate-scroll-faster {
+  animation: scroll 10s linear infinite;
+}
+
+.animate-scroll:hover,
+.animate-scroll-fast:hover,
+.animate-scroll-faster:hover {
+  animation-play-state: paused;
+}
+
+/* Add this to your globals.css for better scroll animation */
+@keyframes scroll-seamless {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-faster {
+  animation: scroll-seamless 15s linear infinite;
+}
+
+.animate-scroll-faster:hover {
+  animation-play-state: paused;
 }
